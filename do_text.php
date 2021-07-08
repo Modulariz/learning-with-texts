@@ -71,7 +71,7 @@ if (isset($_REQUEST['start'])) {
 	}
 	</style>
 	 
-	<script type="text/javascript" src="js/jquery.js" charset="utf-8"></script>
+	<script type="text/javascript" src="<?php echo $_ENV['BASE_URL']; ?>/js/jquery.js" charset="utf-8"></script>
 
 	<script type="text/javascript">
 //<![CDATA[
@@ -114,16 +114,16 @@ $(document).ready(init);
 </script>
  
 <div id="frame-h">
-	<iframe id="frame-h-2" src="do_text_header.php?text=<?php echo $_REQUEST['start']; ?>" scrolling="yes" name="h"></iframe>
+	<iframe id="frame-h-2" src="<?php echo $_ENV['BASE_URL']; ?>/do_text_header.php?text=<?php echo $_REQUEST['start']; ?>" scrolling="yes" name="h"></iframe>
 </div>
 <div id="frame-ro">
-<iframe id="frame-ro-2" src="empty.htm" scrolling="yes" name="ro"></iframe>
+<iframe id="frame-ro-2" src="<?php echo $_ENV['BASE_URL']; ?>/empty.htm" scrolling="yes" name="ro"></iframe>
 </div>
 <div id="frame-l">
-	<iframe id="frame-l-2" src="do_text_text.php?text=<?php echo $_REQUEST['start']; ?>" scrolling="yes" name="l"></iframe>
+	<iframe id="frame-l-2" src="<?php echo $_ENV['BASE_URL']; ?>/do_text_text.php?text=<?php echo $_REQUEST['start']; ?>" scrolling="yes" name="l"></iframe>
 </div>
 <div id="frame-ru">
-	<iframe id="frame-ru-2" src="empty.htm" scrolling="yes" name="ru"></iframe>
+	<iframe id="frame-ru-2" src="<?php echo $_ENV['BASE_URL']; ?>/empty.htm" scrolling="yes" name="ru"></iframe>
 </div>
 
 <?php 
@@ -134,12 +134,12 @@ $(document).ready(init);
 
 <frameset cols="<?php echo tohtml(getSettingWithDefault('set-text-l-framewidth-percent')); ?>%,*">
 	<frameset rows="<?php echo (isset($audio) ? getSettingWithDefault('set-text-h-frameheight-with-audio') : getSettingWithDefault('set-text-h-frameheight-no-audio') ); ?>,*">
-		<frame src="do_text_header.php?text=<?php echo $_REQUEST['start']; ?>" scrolling="auto" name="h" />			
-		<frame src="do_text_text.php?text=<?php echo $_REQUEST['start']; ?>" scrolling="auto" name="l" />
+		<frame src="<?php echo $_ENV['BASE_URL']; ?>/do_text_header.php?text=<?php echo $_REQUEST['start']; ?>" scrolling="auto" name="h" />			
+		<frame src="<?php echo $_ENV['BASE_URL']; ?>/do_text_text.php?text=<?php echo $_REQUEST['start']; ?>" scrolling="auto" name="l" />
 	</frameset>
 	<frameset rows="<?php echo tohtml(getSettingWithDefault('set-text-r-frameheight-percent')); ?>%,*">
-		<frame src="empty.htm" scrolling="auto" name="ro" />
-		<frame src="empty.htm" scrolling="auto" name="ru" />
+		<frame src="<?php echo $_ENV['BASE_URL']; ?>/empty.htm" scrolling="auto" name="ro" />
+		<frame src="<?php echo $_ENV['BASE_URL']; ?>/empty.htm" scrolling="auto" name="ru" />
 	</frameset>
 	<noframes><body><p>Sorry - your browser does not support frames.</p></body></noframes>
 </frameset>
@@ -152,7 +152,7 @@ $(document).ready(init);
 
 else {
 
-	header("Location: edit_texts.php");
+	header("Location: ".$_ENV['BASE_URL']."edit_texts.php");
 	exit();
 
 }

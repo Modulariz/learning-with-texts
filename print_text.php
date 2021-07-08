@@ -98,7 +98,7 @@ function output_text($saveterm,$saverom,$savetrans,$savetags,
 
 $textid = getreq('text')+0;
 if($textid==0) {
-	header("Location: edit_texts.php");
+	header("Location: ".$_ENV['BASE_URL']."edit_texts.php");
 	exit();
 }
 
@@ -143,14 +143,14 @@ pagestart_nobody('Print');
 echo '<div class="noprint">';
 
 echo '<h4>';
-echo '<a href="edit_texts.php" target="_top">';
+echo '<a href="'.$_ENV['BASE_URL'].'/edit_texts.php" target="_top">';
 echo_lwt_logo();
 echo 'LWT';
 echo '</a>&nbsp; | &nbsp;';
 quickMenu();
 echo getPreviousAndNextTextLinks($textid, 'print_text.php?text=', FALSE, '&nbsp; | &nbsp;');
-echo '&nbsp; | &nbsp;<a href="do_text.php?start=' . $textid . '" target="_top"><img src="icn/book-open-bookmark.png" title="Read" alt="Read" /></a> &nbsp;<a href="do_test.php?text=' . $textid . '" target="_top"><img src="icn/question-balloon.png" title="Test" alt="Test" /></a>' . get_annotation_link($textid) . ' &nbsp;<a target="_top" href="edit_texts.php?chg=' . $textid . '"><img src="icn/document--pencil.png" title="Edit Text" alt="Edit Text" /></a>';
-echo '</h4><h3>PRINT&nbsp;▶ ' . tohtml($title) . (isset($sourceURI) ? ' <a href="' . $sourceURI . '" target="_blank"><img src="icn/chain.png" title="Text Source" alt="Text Source" /></a>' : '') . '</h3>';
+echo '&nbsp; | &nbsp;<a href="'.$_ENV['BASE_URL'].'/do_text.php?start=' . $textid . '" target="_top"><img src="'.$_ENV['BASE_URL'].'/icn/book-open-bookmark.png" title="Read" alt="Read" /></a> &nbsp;<a href="'.$_ENV['BASE_URL'].'/do_test.php?text=' . $textid . '" target="_top"><img src="'.$_ENV['BASE_URL'].'/icn/question-balloon.png" title="Test" alt="Test" /></a>' . get_annotation_link($textid) . ' &nbsp;<a target="_top" href="'.$_ENV['BASE_URL'].'/edit_texts.php?chg=' . $textid . '"><img src="'.$_ENV['BASE_URL'].'/icn/document--pencil.png" title="Edit Text" alt="Edit Text" /></a>';
+echo '</h4><h3>PRINT&nbsp;▶ ' . tohtml($title) . (isset($sourceURI) ? ' <a href="' . $sourceURI . '" target="_blank"><img src="'.$_ENV['BASE_URL'].'/icn/chain.png" title="Text Source" alt="Text Source" /></a>' : '') . '</h3>';
 
 echo "<p id=\"printoptions\">Terms with <b>status(es)</b> <select id=\"status\" onchange=\"{val=document.getElementById('status').options[document.getElementById('status').selectedIndex].value;location.href='print_text.php?text=" . $textid . "&amp;status=' + val;}\">";
 echo get_wordstatus_selectoptions($statusrange, true, true, false); 

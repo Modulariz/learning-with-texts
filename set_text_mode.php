@@ -46,7 +46,7 @@ saveSetting('showallwords',$showAll);
 
 pagestart("Text Display Mode changed", false);
 
-echo '<p><span id="waiting"><img src="icn/waiting.gif" alt="Please wait" title="Please wait" />&nbsp;&nbsp;Please wait ...</span>';
+echo '<p><span id="waiting"><img src="<?php echo $_ENV['BASE_URL']; ?>/icn/waiting.gif" alt="Please wait" title="Please wait" />&nbsp;&nbsp;Please wait ...</span>';
 flush();
 ?>
 

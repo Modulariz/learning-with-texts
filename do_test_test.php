@@ -93,7 +93,7 @@ if ($count <= 0) {
 
 	$count2 = get_first_value('SELECT count(distinct WoID) as value FROM ' . $testsql . ' AND WoStatus BETWEEN 1 AND 5 AND WoTranslation != \'\' AND WoTranslation != \'*\' AND WoTomorrowScore < 0');
 	
-	echo '<p class="center"><img src="img/ok.png" alt="Done!" /><br /><br /><span class="red2">Nothing ' . ($totaltests ? 'more ' : '') . 'to test here!<br /><br />Tomorrow you\'ll find here ' . $count2 . ' test' . ($count2 == 1 ? '' : 's') . '!</span></p></div>';
+	echo '<p class="center"><img src="'.$_ENV['BASE_URL'].'/img/ok.png" alt="Done!" /><br /><br /><span class="red2">Nothing ' . ($totaltests ? 'more ' : '') . 'to test here!<br /><br />Tomorrow you\'ll find here ' . $count2 . ' test' . ($count2 == 1 ? '' : 's') . '!</span></p></div>';
 	$count = 0;
 
 } else {
@@ -143,7 +143,7 @@ if ($count <= 0) {
 	if ($num == 0) {
 	
 		// should not occur but...
-		echo '<p class="center"><img src="img/ok.png" alt="Done!" /><br /><br /><span class="red2">Nothing to test here!</span></p></div>';
+		echo '<p class="center"><img src="'.$_ENV['BASE_URL'].'/img/ok.png" alt="Done!" /><br /><br /><span class="red2">Nothing to test here!</span></p></div>';
 		$count = 0;
 		
 	} else {
@@ -272,10 +272,10 @@ $b_correct = ($l_correct == 0) ? 'borderr' : 'borderl borderr';
 ?>
 
 <div id="footer">
-<img src="icn/clock.png" title="Elapsed Time" alt="Elapsed Time" />
+<img src="<?php echo $_ENV['BASE_URL']; ?>/icn/clock.png" title="Elapsed Time" alt="Elapsed Time" />
 <span id="timer" title="Elapsed Time"></span>
 &nbsp; &nbsp; &nbsp; 
-<img class="<?php echo $b_notyet; ?>" src="icn/test_notyet.png" title="Not yet tested" alt="Not yet tested" height="10" width="<?php echo $l_notyet; ?>" /><img class="<?php echo $b_wrong; ?>" src="icn/test_wrong.png" title="Wrong" alt="Wrong" height="10" width="<?php echo $l_wrong; ?>" /><img class="<?php echo $b_correct; ?>" src="icn/test_correct.png" title="Correct" alt="Correct" height="10" width="<?php echo $l_correct; ?>" />
+<img class="<?php echo $b_notyet; ?>" src="<?php echo $_ENV['BASE_URL']; ?>/icn/test_notyet.png" title="Not yet tested" alt="Not yet tested" height="10" width="<?php echo $l_notyet; ?>" /><img class="<?php echo $b_wrong; ?>" src="<?php echo $_ENV['BASE_URL']; ?>/icn/test_wrong.png" title="Wrong" alt="Wrong" height="10" width="<?php echo $l_wrong; ?>" /><img class="<?php echo $b_correct; ?>" src="<?php echo $_ENV['BASE_URL']; ?>/icn/test_correct.png" title="Correct" alt="Correct" height="10" width="<?php echo $l_correct; ?>" />
 &nbsp; &nbsp; &nbsp; 
 <span title="Total number of tests"><?php echo $totaltests; ?></span>
 = 

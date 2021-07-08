@@ -68,13 +68,13 @@ function make_trans($i, $wid, $trans, $word, $lang) {
 	} else {
 		$r = '<span class="nowrap"><input checked="checked" type="radio" name="rg' . $i . '" value="" />&nbsp;<input class="impr-ann-text" type="text" name="tx' . $i . '" id="tx' . $i . '" value="' . tohtml($trans) . '" maxlength="50" size="40" />';
 	}
-	$r .= ' &nbsp;<img class="click" src="icn/eraser.png" title="Erase Text Field" alt="Erase Text Field" onclick="$(\'#tx' . $i . '\').val(\'\').trigger(\'change\');" />';
-	$r .= ' &nbsp;<img class="click" src="icn/star.png" title="* (Set to Term)" alt="* (Set to Term)" onclick="$(\'#tx' . $i . '\').val(\'*\').trigger(\'change\');" />';
+	$r .= ' &nbsp;<img class="click" src="'+$_ENV['BASE_URL'];+'/eraser.png" title="Erase Text Field" alt="Erase Text Field" onclick="$(\'#tx' . $i . '\').val(\'\').trigger(\'change\');" />';
+	$r .= ' &nbsp;<img class="click" src="'+$_ENV['BASE_URL'];+'/star.png" title="* (Set to Term)" alt="* (Set to Term)" onclick="$(\'#tx' . $i . '\').val(\'*\').trigger(\'change\');" />';
 	if ($widset)
-		$r .= ' &nbsp;<img class="click" src="icn/plus-button.png" title="Save another translation to existent term" alt="Save another translation to existent term" onclick="addTermTranslation(' . $wid . ', \'#tx' . $i . '\',\'\',' . $lang . ');" />';
+		$r .= ' &nbsp;<img class="click" src="'+$_ENV['BASE_URL'];+'/plus-button.png" title="Save another translation to existent term" alt="Save another translation to existent term" onclick="addTermTranslation(' . $wid . ', \'#tx' . $i . '\',\'\',' . $lang . ');" />';
 	else 
-		$r .= ' &nbsp;<img class="click" src="icn/plus-button.png" title="Save translation to new term" alt="Save translation to new term" onclick="addTermTranslation(0, \'#tx' . $i . '\',' . prepare_textdata_js($word) . ',' . $lang . ');" />';
-	$r .= '&nbsp;&nbsp;<span id="wait' . $i . '"><img src="icn/empty.gif" /></span></span>';
+		$r .= ' &nbsp;<img class="click" src="'+$_ENV['BASE_URL'];+'/plus-button.png" title="Save translation to new term" alt="Save translation to new term" onclick="addTermTranslation(0, \'#tx' . $i . '\',' . prepare_textdata_js($word) . ',' . $lang . ');" />';
+	$r .= '&nbsp;&nbsp;<span id="wait' . $i . '"><img src="'+$_ENV['BASE_URL'];++'/empty.gif" /></span></span>';
 	return $r;
 }
 
@@ -122,7 +122,7 @@ foreach ($items as $item) {
 		if ($nontermbuffer != '') {
 			$r .= '<tr><td class="td1 center" style="font-size:' . $textsize . '%;">';
 			$r .= $nontermbuffer; 
-			$r .= '</td><td class="td1 right" colspan="3"><img class="click" src="icn/tick.png" title="Back to \'Display/Print Mode\'" alt="Back to \'Display/Print Mode\'" onclick="location.href=\'print_impr_text.php?text=' . $textid . '\';" /></td></tr>';
+			$r .= '</td><td class="td1 right" colspan="3"><img class="click" src="'.$_ENV['BASE_URL'].'/icn/tick.png" title="Back to \'Display/Print Mode\'" alt="Back to \'Display/Print Mode\'" onclick="location.href=\'print_impr_text.php?text=' . $textid . '\';" /></td></tr>';
 			$nontermbuffer ='';
 		}
 		$id = '';
@@ -145,7 +145,7 @@ foreach ($items as $item) {
 		if ($id == '') {
 			$plus = '&nbsp;';
 		} else {
-			$plus = '<a name="rec' . $i . '"></a><span class="click" onclick="oewin(\'edit_word.php?fromAnn=\' + $(document).scrollTop() + \'&amp;wid=' . $id . '\');"><img src="icn/sticky-note--pencil.png" title="Edit Term" alt="Edit Term" /></span>';
+			$plus = '<a name="rec' . $i . '"></a><span class="click" onclick="oewin(\'edit_word.php?fromAnn=\' + $(document).scrollTop() + \'&amp;wid=' . $id . '\');"><img src="'.$_ENV['BASE_URL'].'/icn/sticky-note--pencil.png" title="Edit Term" alt="Edit Term" /></span>';
 		}
 		if ($mustredo) $rr .= "$('#editlink" . $i . "').html(" . prepare_textdata_js($plus) . ");";
 		$r .= $plus;
@@ -156,14 +156,14 @@ foreach ($items as $item) {
 		$r .= '</span></td></tr>';
 	} else {
 		if (trim($vals[1]) != '') {
-			$nontermbuffer .= str_replace("¶", '<img src="icn/new_line.png" title="New Line" alt="New Line" />', tohtml($vals[1])); 
+			$nontermbuffer .= str_replace("¶", '<img src="'.$_ENV['BASE_URL'].'/icn/new_line.png" title="New Line" alt="New Line" />', tohtml($vals[1])); 
 		}
 	}
 }
 if ($nontermbuffer != '') {
 	$r .= '<tr><td class="td1 center" style="font-size:' . $textsize . '%;">';
 	$r .= $nontermbuffer; 
-	$r .= '</td><td class="td1 right" colspan="3"><img class="click" src="icn/tick.png" title="Back to \'Display/Print Mode\'" alt="Back to \'Display/Print Mode\'" onclick="location.href=\'print_impr_text.php?text=' . $textid . '\';" /></td></tr>';
+	$r .= '</td><td class="td1 right" colspan="3"><img class="click" src="'.$_ENV['BASE_URL'].'/icn/tick.png" title="Back to \'Display/Print Mode\'" alt="Back to \'Display/Print Mode\'" onclick="location.href=\'print_impr_text.php?text=' . $textid . '\';" /></td></tr>';
 }
 $r .= '<th class="th1 center">Text</th>';
 $r .= '<th class="th1 center">Dict.</th>';

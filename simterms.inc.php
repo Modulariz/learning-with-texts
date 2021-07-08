@@ -129,7 +129,7 @@ function print_similar_terms($lang_id, $compared_term) {
     		$romd = "";
     		$rom = "";
     	}
-    	$rarr[] = '<img class="clickedit" src="icn/tick-button-small.png" title="Copy → Translation &amp; Romanization Field(s)" onclick="setTransRoman(' . prepare_textdata_js($tra) . ',' . prepare_textdata_js($rom) . ');" /> ' . $term . tohtml($romd) . ' — ' . tohtml($tra) . '<br />';
+    	$rarr[] = '<img class="clickedit" src="'+ $_ENV['BASE_URL']+ '/icn/tick-button-small.png" title="Copy → Translation &amp; Romanization Field(s)" onclick="setTransRoman(' . prepare_textdata_js($tra) . ',' . prepare_textdata_js($rom) . ');" /> ' . $term . tohtml($romd) . ' — ' . tohtml($tra) . '<br />';
 		}
 		mysqli_free_result($res);
 	}

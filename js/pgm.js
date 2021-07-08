@@ -133,7 +133,7 @@ function run_overlib_test(wblink1,wblink2,wblink3,wid,txt,trans,roman,stat,sent,
 		'') +
 	'<b>' + escape_html_chars(make_tooltip(txt,trans,roman,stat)) +	
 	'</b><br />' +
-	' <a href=\x22edit_tword.php?wid=' + wid + '\x22 target=\x22ro\x22>Edit term</a><br />' +
+	' <a href=\x22'+$_ENV['BASE_URL']+'/edit_tword.php?wid=' + wid + '\x22 target=\x22ro\x22>Edit term</a><br />' +
 	createTheDictLink(wblink1,txt,'Dict1','Lookup Term: ') +
 	createTheDictLink(wblink2,txt,'Dict2','') +
 	createTheDictLink(wblink3,txt,'GTr','') + 
@@ -213,7 +213,7 @@ function make_overlib_link_change_status(txid,torder,wid,oldstat,newstat) {
 		return '<span title=\x22' + 
 			getStatusName(oldstat) + '\x22>◆</span>';
 	} else {
-		return ' <a href=\x22set_word_status.php?tid=' + txid + 
+		return ' <a href=\x22'+$_ENV['BASE_URL']+'/set_word_status.php?tid=' + txid + 
 			'&amp;ord=' + torder + 
 			'&amp;wid=' + wid +
 			'&amp;status=' + newstat + '\x22 target=\x22ro\x22><span title=\x22' + 
@@ -224,11 +224,11 @@ function make_overlib_link_change_status(txid,torder,wid,oldstat,newstat) {
 
 function make_overlib_link_change_status_test2(wid,oldstat,newstat) {
 	if (oldstat == newstat) {
-		return ' <a href=\x22set_test_status.php?wid=' + wid +
+		return ' <a href=\x22'+$_ENV['BASE_URL']+'/set_test_status.php?wid=' + wid +
 				'&amp;status=' + newstat + '\x22 target=\x22ro\x22><span title=\x22' + 
 			getStatusName(newstat) + '\x22>[◆]</span></a> ';
 	} else {
-		return ' <a href=\x22set_test_status.php?wid=' + wid +
+		return ' <a href=\x22'+$_ENV['BASE_URL']+'/set_test_status.php?wid=' + wid +
 				'&amp;status=' + newstat + '\x22 target=\x22ro\x22><span title=\x22' + 
 			getStatusName(newstat) + '\x22>[' + 
 				getStatusAbbr(newstat) + ']</span></a> ';
@@ -236,71 +236,71 @@ function make_overlib_link_change_status_test2(wid,oldstat,newstat) {
 }
 
 function make_overlib_link_change_status_test(wid,plusminus,text) {
-	return ' <a href=\x22set_test_status.php?wid=' + wid +
+	return ' <a href=\x22'+$_ENV['BASE_URL']+'/set_test_status.php?wid=' + wid +
 		'&amp;stchange=' + plusminus + '\x22 target=\x22ro\x22>' + text + '</a> ';
 }
 
 function make_overlib_link_new_word(txid,torder,wid) {
-	return ' <a href=\x22edit_word.php?tid=' + txid + 
+	return ' <a href=\x22'+$_ENV['BASE_URL']+'/edit_word.php?tid=' + txid + 
 		'&amp;ord=' + torder + 
 		'&amp;wid=' + wid + '\x22 target=\x22ro\x22>Learn term</a> ';
 }
 
 function make_overlib_link_edit_multiword(txid,torder,wid) {
-	return ' <a href=\x22edit_mword.php?tid=' + txid + 
+	return ' <a href=\x22'+$_ENV['BASE_URL']+'/edit_mword.php?tid=' + txid + 
 		'&amp;ord=' + torder + 
 		'&amp;wid=' + wid + '\x22 target=\x22ro\x22>Edit term</a> ';
 }
 
 function make_overlib_link_edit_multiword_title(text,txid,torder,wid) {
-	return '<a style=\x22color:yellow\x22 href=\x22edit_mword.php?tid=' + txid + 
+	return '<a style=\x22color:yellow\x22 href=\x22'+$_ENV['BASE_URL']+'/edit_mword.php?tid=' + txid + 
 		'&amp;ord=' + torder + 
 		'&amp;wid=' + wid + '\x22 target=\x22ro\x22>' + text + '</a>';
 }
 
 function make_overlib_link_create_edit_multiword(len,txid,torder,txt) {
-	return ' <a href=\x22edit_mword.php?tid=' + txid + 
+	return ' <a href=\x22'+$_ENV['BASE_URL']+'/edit_mword.php?tid=' + txid + 
 		'&amp;ord=' + torder + 
 		'&amp;txt=' + txt +
 		'\x22 target=\x22ro\x22>' + len + '..' + escape_html_chars(txt.substr(-2).trim()) + '</a> ';
 }
 
 function make_overlib_link_create_edit_multiword_rtl(len,txid,torder,txt) {
-	return ' <a dir=\x22rtl\x22 href=\x22edit_mword.php?tid=' + txid + 
+	return ' <a dir=\x22rtl\x22 href=\x22'+$_ENV['BASE_URL']+'/edit_mword.php?tid=' + txid + 
 		'&amp;ord=' + torder + 
 		'&amp;txt=' + txt +
 		'\x22 target=\x22ro\x22>' + len + '..' + escape_html_chars(txt.substr(-2).trim()) + '</a> ';
 }
 
 function make_overlib_link_edit_word(txid,torder,wid) {
-	return ' <a href=\x22edit_word.php?tid=' + txid + 
+	return ' <a href=\x22'+$_ENV['BASE_URL']+'/edit_word.php?tid=' + txid + 
 		'&amp;ord=' + torder + 
 		'&amp;wid=' + wid + '\x22 target=\x22ro\x22>Edit term</a> ';
 }
 
 function make_overlib_link_edit_word_title(text,txid,torder,wid) {
-	return '<a style=\x22color:yellow\x22 href=\x22edit_word.php?tid=' + 
+	return '<a style=\x22color:yellow\x22 href=\x22'+$_ENV['BASE_URL']+'/edit_word.php?tid=' + 
 		txid + '&amp;ord=' + torder + 
 		'&amp;wid=' + wid + '\x22 target=\x22ro\x22>' + text + '</a>';
 }
 
 function make_overlib_link_delete_word(txid,wid) {
-	return ' <a onclick=\x22return confirmDelete();\x22 href=\x22delete_word.php?wid=' +
+	return ' <a onclick=\x22return confirmDelete();\x22 href=\x22'+$_ENV['BASE_URL']+'/delete_word.php?wid=' +
 		wid + '&amp;tid=' + txid + '\x22 target=\x22ro\x22>Delete term</a> ';
 }
 
 function make_overlib_link_delete_multiword(txid,wid) {
-	return ' <a onclick=\x22return confirmDelete();\x22 href=\x22delete_mword.php?wid=' +
+	return ' <a onclick=\x22return confirmDelete();\x22 href=\x22'+$_ENV['BASE_URL']+'/delete_mword.php?wid=' +
 		wid + '&amp;tid=' + txid + '\x22 target=\x22ro\x22>Delete term</a> ';
 }
 
 function make_overlib_link_wellknown_word(txid,torder) {
-	return ' <a href=\x22insert_word_wellknown.php?tid=' + 
+	return ' <a href=\x22'+$_ENV['BASE_URL']+'/insert_word_wellknown.php?tid=' + 
 		txid + '&amp;ord=' + torder + '\x22 target=\x22ro\x22>I know this term well</a> ';
 }
 
 function make_overlib_link_ignore_word(txid,torder) {
-	return ' <a href=\x22insert_word_ignore.php?tid=' + txid + 
+	return ' <a href=\x22'+$_ENV['BASE_URL']+'/insert_word_ignore.php?tid=' + txid + 
 		'&amp;ord=' + torder + '\x22 target=\x22ro\x22>Ignore this term</a> ';
 }
 
@@ -423,7 +423,7 @@ function oewin(url) {
 function createTheDictUrl(u,w) {
 	var url = u.trim();
 	var trm = w.trim();
-	var r = 'trans.php?x=2&i=' + escape(u) + '&t=' + w;
+	var r = $_ENV['BASE_URL']+'/trans.php?x=2&i=' + escape(u) + '&t=' + w;
 	return r;
 }
 
@@ -452,10 +452,10 @@ function createSentLookupLink(torder,txid,url,txt) {
 	var r = '';
 	if (url != '' && txt != '') {
 		if((url.substr(0,8) == '*http://') || (url.substr(0,9) == '*https://')) {
-			r = ' <span class=\x22click\x22 onclick=\x22owin(\'trans.php?x=1&i=' + torder + '&t=' + txid + '\');\x22>' + txt + '</span> ';
+			r = ' <span class=\x22click\x22 onclick=\x22owin(\''+$_ENV['BASE_URL']+'/trans.php?x=1&i=' + torder + '&t=' + txid + '\');\x22>' + txt + '</span> ';
 		} 
 		else if ((url.substr(0,7) == 'http://') || (url.substr(0,8) == 'https://')) {
-			r = ' <a href=\x22trans.php?x=1&i=' + torder + '&t=' + txid + '\x22 target=\x22ru\x22>' + txt + '</a> ';
+			r = ' <a href=\x22'+$_ENV['BASE_URL']+'/trans.php?x=1&i=' + torder + '&t=' + txid + '\x22 target=\x22ru\x22>' + txt + '</a> ';
 		} 
 	}
 	return r;
@@ -575,13 +575,13 @@ function areCookiesEnabled() {
 }
 
 function setLang(ctl,url) {
-	location.href = 'save_setting_redirect.php?k=currentlanguage&v=' + 
+	location.href = $_ENV['BASE_URL']+'/save_setting_redirect.php?k=currentlanguage&v=' + 
 	ctl.options[ctl.selectedIndex].value + 
 	'&u=' + url;
 }
 
 function resetAll(url) {
-	location.href = 'save_setting_redirect.php?k=currentlanguage&v=&u=' + url;
+	location.href = $_ENV['BASE_URL']+'/save_setting_redirect.php?k=currentlanguage&v=&u=' + url;
 }
 
 function getCookie(check_name) {
@@ -634,7 +634,7 @@ function deleteCookie( name, path, domain ) {
 function iknowall(t) {
 	var answer = confirm ('Are you sure?'); 
 	if (answer) 
-		top.frames['ro'].location.href='all_words_wellknown.php?text=' + t;
+		top.frames['ro'].location.href=$_ENV['BASE_URL']+'/all_words_wellknown.php?text=' + t;
 }
 
 function check_table_prefix(p) {

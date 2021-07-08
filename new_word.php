@@ -125,19 +125,19 @@ else {  // if (! isset($_REQUEST['op']))
 	$text = getreq('text') + 0;
 	pagestart_nobody('');
 ?>
-<script type="text/javascript" src="js/unloadformcheck.js" charset="utf-8"></script>
+<script type="text/javascript" src="<?php echo $_ENV['BASE_URL']; ?>/js/unloadformcheck.js" charset="utf-8"></script>
 <?php
 	$scrdir = getScriptDirectionTag($lang);
 	
 ?>
 	
-	<form name="newword" class="validate" action="<?php echo $_SERVER['PHP_SELF']; ?>" method="post">
+	<form name="newword" class="validate" action="<?php echo $_ENV['BASE_URL'].$_SERVER['PHP_SELF']; ?>" method="post">
 	<input type="hidden" name="WoLgID" id="langfield" value="<?php echo $lang; ?>" />
 	<input type="hidden" name="tid" value="<?php echo $text; ?>" />
 	<table class="tab3" cellspacing="0" cellpadding="5">
 	<tr>
 	<td class="td1 right"><b>New Term:</b></td>
-	<td class="td1"><input <?php echo $scrdir; ?> class="notempty setfocus checkoutsidebmp" data_info="New Term" type="text" name="WoText" id="wordfield" value="" maxlength="250" size="35" /> <img src="icn/status-busy.png" title="Field must not be empty" alt="Field must not be empty" /></td>
+	<td class="td1"><input <?php echo $scrdir; ?> class="notempty setfocus checkoutsidebmp" data_info="New Term" type="text" name="WoText" id="wordfield" value="" maxlength="250" size="35" /> <img src="<?php echo $_ENV['BASE_URL']; ?>/icn/status-busy.png" title="Field must not be empty" alt="Field must not be empty" /></td>
 	</tr>
 	<?php print_similar_terms_tabrow(); ?>
   <tr>

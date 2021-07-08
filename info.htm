@@ -53,8 +53,8 @@ LWT Information / Help
 		<style type="text/css">
 			@import url(css/styles.css);
 		</style>
-		<script type="text/javascript" src="js/jquery.js"></script>	
-		<script type="text/javascript" src="js/floating.js"></script>	
+		<script type="text/javascript" src="<?php echo $_ENV['BASE_URL']; ?>/js/jquery.js"></script>	
+		<script type="text/javascript" src="<?php echo $_ENV['BASE_URL']; ?>/js/floating.js"></script>	
 		<title>
 			Learning with Texts :: Help/Information
 		</title>
@@ -97,7 +97,7 @@ $(document).ready( function() {
 		<div style="margin-right:100px;">
 
 		<h4>
-			<a href="index.php" target="_top"><img src="img/lwt_icon_big.png" class="lwtlogoright" alt="Logo" />Learning with Texts</a>
+			<a href="index.php" target="_top"><img src="<?php echo $_ENV['BASE_URL']; ?>/img/lwt_icon_big.png" class="lwtlogoright" alt="Logo" />Learning with Texts</a>
 			<br />
 			<br />
 			<span class="bigger">Help/Information</span>
@@ -661,7 +661,7 @@ $(document).ready( function() {
 						This is home screen of LWT if the database is empty. Please install the demo database or start with the definition of a language you want to learn.
 						<br />
 						<br />
-						<img class="grayborder" src="img/23.jpg" alt="Image" />
+						<img class="grayborder" src="<?php echo $_ENV['BASE_URL']; ?>/img/23.jpg" alt="Image" />
 						<br />
 						<br />
 					</li>
@@ -673,7 +673,7 @@ $(document).ready( function() {
 						This is normal home screen of LWT. You may choose a language here, but you can do this also later. If you you choose a language, the language filter is pre-set to that language in some other screens. The last text you've read or tested is shown, and you may jump directly into reading, testing or printing of this last text.
 						<br />
 						<br />
-						<img class="grayborder" src="img/01.jpg" alt="Image" />
+						<img class="grayborder" src="<?php echo $_ENV['BASE_URL']; ?>/img/01.jpg" alt="Image" />
 						<br />
 						<br />
 					</li>
@@ -685,7 +685,7 @@ $(document).ready( function() {
 						The list of languages. Here you can add a new or edit an existent language. If no texts and no saved terms in a language exist, you can delete a language. If you change a language, all texts may be	be automatically reparsed to refresh (and correct) the cache of sentences and text items (depends on what language settings you have changed). You can do this also manually by clicking on the yellow flash icon. You can also test all (due) terms of a language or set a language as "current" language.
 						<br />
 						<br />
-						<img class="grayborder" src="img/02.jpg" alt="Image" />
+						<img class="grayborder" src="<?php echo $_ENV['BASE_URL']; ?>/img/02.jpg" alt="Image" />
 						<br />
 						<br />
 					</li>
@@ -750,7 +750,7 @@ $(document).ready( function() {
 						To understand all these options, please study also <a href="#langsetup">this</a>, look at the examples and play around with different settings and different texts.
 						<br />
 						<br />
-						<img class="grayborder" src="img/03.jpg" alt="Image" />
+						<img class="grayborder" src="<?php echo $_ENV['BASE_URL']; ?>/img/03.jpg" alt="Image" />
 						<br />
 						<br />
 					</li>
@@ -762,7 +762,7 @@ $(document).ready( function() {
 						The list of texts. You can filter this list according to language, title (wildcard = *) or text tag(s) (see also below). The most important links for each text are "Read" and "Test" - that's the place to read, to listen, to save terms and to review and test your terms in sentence context. To see all terms of a text that you have saved, click on the numbers in column "Saved Wo+Ex". To print, archive, edit (and reparse), or to	delete a text, click on the icons in column "Actions". There are more actions available, see "Multi Actions".
 						<br />
 						<br />
-						<img class="grayborder" src="img/04.jpg" alt="Image" />
+						<img class="grayborder" src="<?php echo $_ENV['BASE_URL']; ?>/img/04.jpg" alt="Image" />
 						<br />
 						<br />
 						<b>Multi Actions for marked texts</b>
@@ -771,7 +771,7 @@ $(document).ready( function() {
 						You can test the terms of the marked texts, delete or archive the marked texts. "Reparse Texts" rebuilds the sentence and the text item cache for all marked texts. "Set Term Sentences" sets a valid sentence (with the term in {..}) for all those saved or imported terms that occur in the text and that do not have a sentence at all or none with {term}. This makes it easy to "create" sentence examples for imported terms.
 						<br />
 						<br />
-						<img class="grayborder" src="img/14.jpg" alt="Image" />
+						<img class="grayborder" src="<?php echo $_ENV['BASE_URL']; ?>/img/14.jpg" alt="Image" />
 						<br />
 						<br />
 					</li>
@@ -783,7 +783,7 @@ $(document).ready( function() {
 						The list of your text tags. You can manage your text tags here. With text tags, it will be easier to categorize and organize your texts. The tags are case sensitive, have 1 to 20 characters, and must not contain any spaces or commas.
 						<br />
 						<br />
-						<img class="grayborder" src="img/25.jpg" alt="Image" />
+						<img class="grayborder" src="<?php echo $_ENV['BASE_URL']; ?>/img/25.jpg" alt="Image" />
 						<br />
 						<br />
 					</li>
@@ -795,13 +795,13 @@ $(document).ready( function() {
 						This is the screen to input, check or edit a single text. Try to store not too long texts (the maximum length is 65,000 Bytes). If texts are very long (> 1000 words), certain operations (e.g. loading a text for reading, calculation of known/unknown words) may be quite slow. An audio URI and a link to the text source can also be defined. The best place to store your audios is the "media" subdirectory below the installation directory "lwt" (you have to create it yourself, and you have to copy the audio files into this directory; click Refresh if you don't see just copied media). But a cloud webspace service like DropBox is also possible. In the moment there is no possibility to import/upload an audio file within the LWT application. By the way, you can use MP3, WAV, or OGG media files, but be aware that not all browsers and/or operating systems support all media types! If you click "Check", the text will be parsed and split into sentences and words according to your language settings. Nothing will be stored if you check a text. You can see whether your text needs some editing, or whether your language settings (especially the ones that influence parsing/splitting) need an adjustment. Words (not expressions) that are already in your word list are displayed in red, and the translation is displayed. The Non-Word List shows all stuff between words. The "Check a Text" function can also be started directly from the main menu. If you click on "Change" or "Save", the text will be only saved. If you click on "Change and Open" or "Save and Open", the text will be saved and opened right away.
 						<br />
 						<br />
-						<img class="grayborder" src="img/05.jpg" alt="Image" />
+						<img class="grayborder" src="<?php echo $_ENV['BASE_URL']; ?>/img/05.jpg" alt="Image" />
 						<br />
 						<br />
 						You can also import a longer text into LWT with the possibility to split it up into several smaller texts. Click on "Long Text Import". You must specify the maximum number of sentences per text, and the handling of newlines for paragraph detection. It is not possible to specify audio files or URIs.
 						<br />
 						<br />
-						<img class="grayborder" src="img/33.jpg" alt="Image" />
+						<img class="grayborder" src="<?php echo $_ENV['BASE_URL']; ?>/img/33.jpg" alt="Image" />
 						<br />
 						<br />
 					</li>
@@ -813,13 +813,13 @@ $(document).ready( function() {
 						This is your "working area": Reading (and listening to) a text, saving/editing words and expressions, looking up words, expressions, sentences in external dictionaries or Google Translate. To create an expression, click on the first word. You see "Exp: 2..xx 3..yy 4..zz ...". Just click on the number of words (2..9) of the desired expression you want to save. The dictionary links for multi word expressions are always in the edit frame! You can also use the Keyboard in the text frame, see <a href="#keybind">Key Bindings</a>. Double clicking on a word sets the audio position approximately to the text position, if an audio was defined. The other audio controls are self-explanatory: automatic repeat, rewind and move forward n seconds, etc.). 
 						<br />
 						<br />
-						<img class="grayborder" src="img/06.jpg" alt="Image" />
+						<img class="grayborder" src="<?php echo $_ENV['BASE_URL']; ?>/img/06.jpg" alt="Image" />
 						<br />
 						<br />
 						Reading a Right-To-Left Script (Hebrew):
 						<br />
 						<br />
-						<img class="grayborder" src="img/26.jpg" alt="Image" />
+						<img class="grayborder" src="<?php echo $_ENV['BASE_URL']; ?>/img/26.jpg" alt="Image" />
 						<br />
 						<br />
 						With the checkbox [Show All] you can switch the display of text:
@@ -828,13 +828,13 @@ $(document).ready( function() {
 						[Show All] = ON (see below): All terms are shown, and all multi-word terms are shown as superscripts before the first word. The superscript indicates the number of words in the multi-word term. 
 						<br />
 						<br />
-						<img class="grayborder" src="img/22.jpg" alt="Image" />
+						<img class="grayborder" src="<?php echo $_ENV['BASE_URL']; ?>/img/22.jpg" alt="Image" />
 						<br />
 						<br />
 						[Show All] = OFF (see below): Multi-word terms now hide single words and shorter or overlapping multi-word terms. This makes it easier to concentrate on multi-word terms while displaying them without superscripts, but creation and deletion of multi-word terms can be a bit slow in long texts. 
 						<br />
 						<br />
-						<img class="grayborder" src="img/30.jpg" alt="Image" />
+						<img class="grayborder" src="<?php echo $_ENV['BASE_URL']; ?>/img/30.jpg" alt="Image" />
 						<br />
 						<br />
 					</li>
@@ -861,7 +861,7 @@ $(document).ready( function() {
 						This is Test #1 or #4: L2 -&gt; L1 (recognition) - to train your ability to recognize a L2 term. You may test within sentence context (Button "..[L2].."), or just the term (Button "[L2]"). You can also use the Keyboard in the test frame, see <a href="#keybind">Key Bindings</a>.
 						<br />
 						<br />
-						<img class="grayborder" src="img/07.jpg" alt="Image" />
+						<img class="grayborder" src="<?php echo $_ENV['BASE_URL']; ?>/img/07.jpg" alt="Image" />
 						<br />
 						<br />
 					</li>
@@ -873,7 +873,7 @@ $(document).ready( function() {
 						This is Test #2 or #5: L1 -&gt; L2 (recall) - to train your ability to produce a term from L1. You may test within sentence context (Button "..[L1].."), or just the term (Button "[L1]"). You can also use the Keyboard in the test frame, see <a href="#keybind">Key Bindings</a>.
 						<br />
 						<br />
-						<img class="grayborder" src="img/11.jpg" alt="Image" />
+						<img class="grayborder" src="<?php echo $_ENV['BASE_URL']; ?>/img/11.jpg" alt="Image" />
 						<br />
 						<br />
 					</li>
@@ -885,7 +885,7 @@ $(document).ready( function() {
 						This is test #3: ••• -&gt; L2 (recall) - to train your ability to produce a term only from the sentence context (Button "..[••].."). If you hover over "[•••]", a tooltip displays the translation of the term. You can also use the Keyboard in the test frame, see <a href="#keybind">Key Bindings</a>.
 						<br />
 						<br />
-						<img class="grayborder" src="img/12.jpg" alt="Image" />
+						<img class="grayborder" src="<?php echo $_ENV['BASE_URL']; ?>/img/12.jpg" alt="Image" />
 						<br />
 						<br />
 					</li>
@@ -897,7 +897,7 @@ $(document).ready( function() {
 						This is test #6: The selected terms and expressions are presented as a table. You can make invisible either the columns "Term" or "Translation", and you can hide or show the columns "Sentence", "Romanization", "Status" and "Ed" (Edit). To reveal the invisible solution ("Term" or "Translation"), you just click into the empty table cell. You can review or test yourself with or without changing the status by clicking "+" or "-" in the "Status" column. A status in red signifies that the term is due for testing. You can also edit the term by clicking the yellow "Edit" icon. Columns 2 to 6 may also my sorted by clicking on the header row. The initial sort order is according to term score.
 						<br />
 						<br />
-						<img class="grayborder" src="img/32.jpg" alt="Image" />
+						<img class="grayborder" src="<?php echo $_ENV['BASE_URL']; ?>/img/32.jpg" alt="Image" />
 						<br />
 						<br />
 					</li>
@@ -912,13 +912,13 @@ $(document).ready( function() {
 						Chinese Text with annotation (Romanization/Pinyin and translation):
 						<br />
 						<br />
-						<img class="grayborder" src="img/20.jpg" alt="Image" />
+						<img class="grayborder" src="<?php echo $_ENV['BASE_URL']; ?>/img/20.jpg" alt="Image" />
 						<br />
 						<br />
 						Chinese Text with annotation (only Romanization/Pinyin):
 						<br />
 						<br />
-						<img class="grayborder" src="img/21.jpg" alt="Image" />
+						<img class="grayborder" src="<?php echo $_ENV['BASE_URL']; ?>/img/21.jpg" alt="Image" />
 						<br />
 						<br />
 						<a name="il"></a><b>How to create, edit, and use an <i>Improved Annotated Text</i>:</b>
@@ -933,7 +933,7 @@ $(document).ready( function() {
 						<br /><br />
 						<b>Edit Mode:</b>
 						<br /><br />
-						<img class="grayborder" src="img/28.jpg" alt="Image" />
+						<img class="grayborder" src="<?php echo $_ENV['BASE_URL']; ?>/img/28.jpg" alt="Image" />
 						<br /><br />
 						Within the "Improved Annotated Text - Edit Mode", you can select the best term translation by clicking on one of the radio buttons. To be able to do this, multiple translations must be delimited by one of the delimiters specified in the LWT Settings (currently: /;|). You can also type in a new translation into the text box at the end (this does not change your saved term translation), or you may change your term by clicking on the yellow icon or add a translation by clicking on the green "+" icon (this does change your saved term translation), and select it afterwards. The "Star" icon indicated that you want the term itself as annotation. <b>Important:</b> It's not possible to create new terms here - please do this in the "Read text" screen. Changing the language settings (e.g. the word characters) may have the effect that you have to start from scratch. The best time for the creation of an improved annotated text is after you have read the text completely and created all terms and expressions in the "Read text" screen.
 						<br /><br />
@@ -945,11 +945,11 @@ $(document).ready( function() {
 						<br /><br />
 						<b>Print Mode:</b>
 						<br /><br />
-						<img class="grayborder" src="img/27.jpg" alt="Image" />
+						<img class="grayborder" src="<?php echo $_ENV['BASE_URL']; ?>/img/27.jpg" alt="Image" />
 						<br /><br />
 						<b>Display Mode</b> (with audio player) in a separate window. Clicking the "T" or "A" lightbulb icons hides/shows the text or the blue annotations. You may also click on a single term or a single annotation to show or to hide it. This enables you to test yourself or to concentrate on one text only. Romanizations, if available, appear while hovering over a term.
 						<br /><br />
-						<img class="grayborder" src="img/29.jpg" alt="Image" />
+						<img class="grayborder" src="<?php echo $_ENV['BASE_URL']; ?>/img/29.jpg" alt="Image" />
 						<br /><br />
 					</li>
 
@@ -960,7 +960,7 @@ $(document).ready( function() {
 						The list of your saved words or expressions (= terms). You may filter the list of terms by language, text, status, term/romanization/translation (wildcard * possible) or term tag(s). Different sort orders are possible. You can do "multi actions" only on the marked or on all terms (on all pages!). "Se?" displays a green dot if a valid sentences with {term} exists. "Stat/Days" displays the status and the number of days since the last status change. The score of a term is a rough measure (in percent) how well you know a term. Read more about term scores <a href="#termscores">here</a>. Terms with zero score are displayed red and should be tested today.
 						<br />
 						<br />
-						<img class="grayborder" src="img/08.jpg" alt="Image" />
+						<img class="grayborder" src="<?php echo $_ENV['BASE_URL']; ?>/img/08.jpg" alt="Image" />
 						<br />
 						<br />
 						<b>Multi Actions for marked terms</b>
@@ -975,7 +975,7 @@ $(document).ready( function() {
 						"Export Marked Texts (TSV)" exports all terms that have been marked. The export is tab-delimited: (1) term, (2) translation, (3) sentence, (4) romanization, (5) status, (6) language, (7) ID Number, (8) tag list.
 						<br />
 						<br />
-						<img class="grayborder" src="img/16.jpg" alt="Image" />
+						<img class="grayborder" src="<?php echo $_ENV['BASE_URL']; ?>/img/16.jpg" alt="Image" />
 						<br />
 						<br />
 						<b>Multi Actions for all terms on all pages of the current query</b>
@@ -984,7 +984,7 @@ $(document).ready( function() {
 						Explanations see above.
 						<br />
 						<br />
-						<img class="grayborder" src="img/17.jpg" alt="Image" />
+						<img class="grayborder" src="<?php echo $_ENV['BASE_URL']; ?>/img/17.jpg" alt="Image" />
 						<br />
 						<br />
 					</li>
@@ -996,7 +996,7 @@ $(document).ready( function() {
 						The list of your term tags. You can manage your term tags here. With term tags, it will be easier to categorize and organize your terms. The tags are case sensitive, have 1 to 20 characters, and must not contain any spaces or commas.
 						<br />
 						<br />
-						<img class="grayborder" src="img/24.jpg" alt="Image" />
+						<img class="grayborder" src="<?php echo $_ENV['BASE_URL']; ?>/img/24.jpg" alt="Image" />
 						<br />
 						<br />
 					</li>
@@ -1033,13 +1033,13 @@ $(document).ready( function() {
 						</ul>
 						<br />
 						<br />
-						<img class="grayborder" src="img/13.jpg" alt="Image" />
+						<img class="grayborder" src="<?php echo $_ENV['BASE_URL']; ?>/img/13.jpg" alt="Image" />
 						<br />
 						<br />
 						<b>Multi Actions for marked archived texts</b>
 						<br />
 						<br />
-						<img class="grayborder" src="img/15.jpg" alt="Image" />
+						<img class="grayborder" src="<?php echo $_ENV['BASE_URL']; ?>/img/15.jpg" alt="Image" />
 						<br />
 						<br />
 					</li>
@@ -1051,7 +1051,7 @@ $(document).ready( function() {
 						It's self-explanatory and shows your performance. The numbers in the first table are links, by clicking on them you jump to the table of all terms in that status and language.
 						<br />
 						<br />
-						<img class="grayborder" src="img/09.jpg" alt="Image" />
+						<img class="grayborder" src="<?php echo $_ENV['BASE_URL']; ?>/img/09.jpg" alt="Image" />
 						<br />
 						<br />
 					</li>
@@ -1063,7 +1063,7 @@ $(document).ready( function() {
 						Import a list of terms for a language, and set the status for all to a specified value. You can specify a file to upload or type/paste the data directly into the textbox. Format: one term per line, fields (columns) are separated either by comma ("CSV" file, e.g. used in LingQ as export format), TAB ("TSV" file, e.g. copy and paste from a spreadsheet program, not possible if you type in data manually) or # (if you type in data manually). The field/column assignment must be specified on the left. Important: You must import a term. The translation can be omitted if the status should be set to 98 or 99 (ignore/well known). Translation, romanization and sentence are all optional, but please understand that tests are only possible if terms have a translation. If a term already exists in the database (comparison is NOT case sensitive), it will not be overwritten; the line will be ignored. You can change this by setting "Overwrite existent terms" to "Yes". Be careful using this screen, a database backup before the import and double-checking everything is always advisable!
 						<br />
 						<br />
-						<img class="grayborder" src="img/10.jpg" alt="Image" />
+						<img class="grayborder" src="<?php echo $_ENV['BASE_URL']; ?>/img/10.jpg" alt="Image" />
 						<br />
 						<br />
 					</li>
@@ -1075,7 +1075,7 @@ $(document).ready( function() {
 						This screen offers a possibility to save, restore or empty the LWT database (ONLY the current table set!). This makes it easy to try out new things or just to make regular backups. "Restore" only accepts files that have been created with the "Backup" function above. "Empty Database" deletes the data of all tables (except the settings) of the current table set, and you can start from scratch afterwards. Be careful: you may lose valuable data!
 						<br />
 						<br />
-						<img class="grayborder" src="img/18.jpg" alt="Image" />
+						<img class="grayborder" src="<?php echo $_ENV['BASE_URL']; ?>/img/18.jpg" alt="Image" />
 						<br />
 						<br />
 					</li>
@@ -1087,7 +1087,7 @@ $(document).ready( function() {
 						In this screen you can adjust the program according to your needs. The geometric properties of the <i>Read Text</i> and <i>Test</i> screens can be changed. This is important because different browsers and font sizes may result in an unpleasant viewing experience. The waiting time to display the next test and to hide the old message after a test assessment can also be changed. The number of sentences displayed during testing and generated during term creation can be set to 1 (default), 2 or 3; if set to 2 or 3 you are able to do "MCD" (Massive-Context Cloze Deletion) testing, proposed by Khatzumoto @ AJATT. The number of items per page on different screens can be set, and you can decide whether you want to see the word counts on the textpage immediately (page may load slow) or later (faster initial loading).
 						<br />
 						<br />
-						<img class="grayborder" src="img/19.jpg" alt="Image" />
+						<img class="grayborder" src="<?php echo $_ENV['BASE_URL']; ?>/img/19.jpg" alt="Image" />
 						<br />
 						<br />
 					</li>
@@ -1108,7 +1108,7 @@ $(document).ready( function() {
 						Just click on the link at the bottom of the LWT home screen where the current table set name (or "Default") is displayed. In a new screen "Select, Create or Delete a Table Set" you may switch and manage table sets. A table set name is max. 20 characters long. Allowed characters are only: a-z, A-Z, 0-9, and the underscore "_".	
 						<br />
 						<br />
-						<img class="grayborder" src="img/31.jpg" alt="Image" />
+						<img class="grayborder" src="<?php echo $_ENV['BASE_URL']; ?>/img/31.jpg" alt="Image" />
 						<br />
 						<br />
 						If you want "switch off" this feature, and use just one table set, you may define the name in the file "connect.inc.php":
@@ -1145,7 +1145,7 @@ $(document).ready( function() {
 					<li>I want to use LWT, and I see something like this:
 						<br />
 						<br />
-						<img class="grayborder" src="img/prob1.png" alt="Image" />
+						<img class="grayborder" src="<?php echo $_ENV['BASE_URL']; ?>/img/prob1.png" alt="Image" />
 						<br />
 						<br />
 						Answer: Your local webserver (Apache) is not running. Please start it via EasyPHP or MAMP control program/panel.
@@ -1156,7 +1156,7 @@ $(document).ready( function() {
 					<li>I want to use LWT, and I see something like this:
 						<br />
 						<br />
-						<img class="grayborder" src="img/prob2.png" alt="Image" />
+						<img class="grayborder" src="<?php echo $_ENV['BASE_URL']; ?>/img/prob2.png" alt="Image" />
 						<br />
 						<br />
 						Answer: The server is running, but the application is not found. Maybe the Uniform Resource Identifier (URI) is wrong or misspelled. Please check/correct it. Or the URI is correct, and the application is installed, but not in the correct directory <i>lwt</i> below <i>htdocs</i>. Please install/copy/move it into the correct directory.
@@ -1167,7 +1167,7 @@ $(document).ready( function() {
 					<li>I want to use LWT, and I see this:
 						<br />
 						<br />
-						<img class="grayborder" src="img/prob3.png" alt="Image" />
+						<img class="grayborder" src="<?php echo $_ENV['BASE_URL']; ?>/img/prob3.png" alt="Image" />
 						<br />
 						<br />
 						Answer: Either the database (MySQL) is not running, or the database connection parameters in <i>../htdocs/lwt/connect.inc.php</i> are wrong. Please check/correct the database connection parameters and/or start MySQL via the MAMP or EasyPHP control program/panel.
@@ -1178,7 +1178,7 @@ $(document).ready( function() {
 					<li>I want to use LWT, and I see this:
 						<br />
 						<br />
-						<img class="grayborder" src="img/prob4.png" alt="Image" />
+						<img class="grayborder" src="<?php echo $_ENV['BASE_URL']; ?>/img/prob4.png" alt="Image" />
 						<br />
 						<br />
 						Answer: The Webserver and the database is running, but the database connection parameter file <i>../htdocs/lwt/connect.inc.php</i> is not found. Please rename one of the connection files (according to your server) to <i>../htdocs/lwt/connect.inc.php</i>.
@@ -1462,7 +1462,7 @@ $(document).ready( function() {
 					<li>The score is calculated as follows:
 						<br />
 						<br />
-						<img class="grayborder" src="img/score1full.png" alt="Image" />
+						<img class="grayborder" src="<?php echo $_ENV['BASE_URL']; ?>/img/score1full.png" alt="Image" />
 						<br />
 						<br />
 						Terms with status 1 are tested either today (if not created today) or tomorrow (if created today, or a test failed today). Terms set to status 2 should be retested after 2 days. Terms set to status 3 should be retested after 9 days. Terms set to status 4 should be retested after 27 days. Terms set to status 5 should be retested after 72 days.
@@ -1473,7 +1473,7 @@ $(document).ready( function() {
 					<li>Example 1: Five terms were tested today; they are now in status 1, 2, 3, 4, and 5. The term with status 1 is still unknown (failed the test, so the score is still 0 %). The term with status 5 is well known (score: 100 %).
 						<br />
 						<br />
-						<img class="grayborder" src="img/score2.png" alt="Image" />
+						<img class="grayborder" src="<?php echo $_ENV['BASE_URL']; ?>/img/score2.png" alt="Image" />
 						<br />
 						<br />
 					</li>
@@ -1481,7 +1481,7 @@ $(document).ready( function() {
 					<li>Example 2: Five terms were not tested for some time; they are in status 1, 2, 3, 4, and 5. All of them have a score of 0, because the number of days indicate that you may have forgotten them. Therefore all should be retested today.
 						<br />
 						<br />
-						<img class="grayborder" src="img/score3.png" alt="Image" />
+						<img class="grayborder" src="<?php echo $_ENV['BASE_URL']; ?>/img/score3.png" alt="Image" />
 					</li>
 				</ul>
 			</dd>
@@ -1599,7 +1599,7 @@ $(document).ready( function() {
 		<table>
 			<tr>
 				<td class="width50px">
-					<a target="_blank" href="http://en.wikipedia.org/wiki/Public_domain_software"><img src="img/public_domain.png" alt="Public Domain" /></a>
+					<a target="_blank" href="http://en.wikipedia.org/wiki/Public_domain_software"><img src="<?php echo $_ENV['BASE_URL']; ?>/img/public_domain.png" alt="Public Domain" /></a>
 				</td>
 				<td>
 					<p class="smallgray">

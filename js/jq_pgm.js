@@ -83,11 +83,11 @@ function changeImprAnnText() {
 	$(this).prev('input:radio').attr('checked', 'checked');
 	var elem = $(this).attr('name');
 	var idwait = '#wait' + elem.substring(2);
-	$(idwait).html('<img src="icn/waiting2.gif" />');
+	$(idwait).html('<img src="'+$_ENV.BASE_URL+'/icn/waiting2.gif" />');
 	var thedata = JSON.stringify($('form').serializeObject());
 	$.post('ajax_save_impr_text.php', { id: textid, elem: elem, data : thedata }
 		, function(d) { 
-				$(idwait).html('<img src="icn/empty.gif" />');
+				$(idwait).html('<img src="'+$_ENV.BASE_URL+'/icn/empty.gif" />');
 				if(d != 'OK') 
 					alert('Saving your changes failed, please reload page and try again!'); 
 			} 
@@ -98,11 +98,11 @@ function changeImprAnnRadio() {
 	var textid = $('#editimprtextdata').attr('data_id');
 	var elem = $(this).attr('name');
 	var idwait = '#wait' + elem.substring(2);
-	$(idwait).html('<img src="icn/waiting2.gif" />');
+	$(idwait).html('<img src="'+$_ENV.BASE_URL+'/icn/waiting2.gif" />');
 	var thedata = JSON.stringify($('form').serializeObject());
 	$.post('ajax_save_impr_text.php', { id: textid, elem: elem, data : thedata }
 		, function(d) { 
-				$(idwait).html('<img src="icn/empty.gif" />');
+				$(idwait).html('<img src="'+$_ENV.BASE_URL+'/icn/empty.gif" />');
 				if(d != 'OK') 
 					alert('Saving your changes failed, please reload page and try again!'); 
 			} 
@@ -544,21 +544,21 @@ function do_ajax_save_setting(k, v) {
 }
 
 function do_ajax_update_media_select() {
-	$('#mediaselect').html('&nbsp; <img src="icn/waiting2.gif" />');
+	$('#mediaselect').html('&nbsp; <img src="'+$_ENV.BASE_URL+'/icn/waiting2.gif" />');
 	$.post('ajax_update_media_select.php', 
 		function(data) { $('#mediaselect').html(data); } 
 	);
 }
 
 function do_ajax_show_sentences(lang,word,ctl) {
-	$('#exsent').html('<img src="icn/waiting2.gif" />');
+	$('#exsent').html('<img src="'+$_ENV.BASE_URL+'/icn/waiting2.gif" />');
 	$.post('ajax_show_sentences.php', { lang: lang, word: word, ctl: ctl }, 
 		function(data) { $('#exsent').html(data); } 
 	);
 }
 
 function do_ajax_show_similar_terms() {
-	$('#simwords').html('<img src="icn/waiting2.gif" />');
+	$('#simwords').html('<img src="'+$_ENV.BASE_URL+'/icn/waiting2.gif" />');
 	$.post('ajax_show_similar_terms.php', { lang: $('#langfield').val(), word: $('#wordfield').val() }, 
 		function(data) { $('#simwords').html(data); } 
 	);
@@ -568,7 +568,7 @@ function do_ajax_word_counts() {
 	$("span[id^='saved-']").each(
 		function(i) {
 			var textid = $(this).attr('data_id');
-			$(this).html('<img src="icn/waiting2.gif" />');
+			$(this).html('<img src="'+$_ENV.BASE_URL+'/icn/waiting2.gif" />');
 			$.post('ajax_word_counts.php', { id: textid },
 				function(data) { 
 					var res = eval('(' + data + ')');
@@ -583,7 +583,7 @@ function do_ajax_word_counts() {
 }
 
 function do_ajax_edit_impr_text(pagepos, word) {
-	if (word=='') $('#editimprtextdata').html('<img src="icn/waiting2.gif" />');
+	if (word=='') $('#editimprtextdata').html('<img src="'+$_ENV.BASE_URL+'/icn/waiting2.gif" />');
 	var textid = $('#editimprtextdata').attr('data_id');
 	$.post('ajax_edit_impr_text.php', { id: textid, word: word }, 
 		function(data) {
@@ -617,7 +617,7 @@ $(document).ready( function() {
 	$('.edit_area').editable('inline_edit.php', 
 		{ 
 			type      : 'textarea',
-			indicator : '<img src="icn/indicator.gif">',
+			indicator : '<img src="'+$_ENV.BASE_URL+'/icn/indicator.gif">',
 			tooltip   : 'Click to edit...',
 			submit    : 'Save',
 			cancel    : 'Cancel',

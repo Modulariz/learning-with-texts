@@ -75,7 +75,7 @@ $currenttext = getSetting('currenttext');
 $langcnt = get_first_value('select count(*) as value from ' . $tbpref . 'languages');
 
 if ($langcnt == 0) {
-echo '<table class="tab3" cellspacing="0" cellpadding="5"><tr><th class="th1">Hint: The database seems to be empty.<br /><a href="install_demo.php">You may install the LWT demo database, </a><br />or<br /><a href="edit_languages.php?new=1">define the first language you want to learn.</a></th></tr></table>';
+echo '<table class="tab3" cellspacing="0" cellpadding="5"><tr><th class="th1">Hint: The database seems to be empty.<br /><a href="'.$_ENV['BASE_URL'].'/install_demo.php">You may install the LWT demo database, </a><br />or<br /><a href="'.$_ENV['BASE_URL'].'/edit_languages.php?new=1">define the first language you want to learn.</a></th></tr></table>';
 }
 
 ?>
@@ -102,16 +102,16 @@ if (! areCookiesEnabled()) document.write('<p class="red">*** Cookies are not en
 			<ul>
 			<li>My last Text (in <?php echo tohtml($lngname); ?>):<br /> <i><?php echo tohtml($txttit); ?></i>
 			<br />
-			<a href="do_text.php?start=<?php echo $currenttext; ?>"><img src="icn/book-open-bookmark.png" title="Read" alt="Read" />&nbsp;Read</a>
+			<a href="<?php echo $_ENV['BASE_URL'] ?>/do_text.php?start=<?php echo $currenttext; ?>"><img src="<?php echo $_ENV['BASE_URL']; ?>/icn/book-open-bookmark.png" title="Read" alt="Read" />&nbsp;Read</a>
 			&nbsp; &nbsp; 
-			<a href="do_test.php?text=<?php echo $currenttext; ?>"><img src="icn/question-balloon.png" title="Test" alt="Test" />&nbsp;Test</a>
+			<a href="<?php echo $_ENV['BASE_URL'] ?>/do_test.php?text=<?php echo $currenttext; ?>"><img src="<?php echo $_ENV['BASE_URL']; ?>/icn/question-balloon.png" title="Test" alt="Test" />&nbsp;Test</a>
 			&nbsp; &nbsp; 
-			<a href="print_text.php?text=<?php echo $currenttext; ?>"><img src="icn/printer.png" title="Print" alt="Print" />&nbsp;Print</a>
+			<a href="<?php echo $_ENV['BASE_URL'] ?>/print_text.php?text=<?php echo $currenttext; ?>"><img src="<?php echo $_ENV['BASE_URL']; ?>/icn/printer.png" title="Print" alt="Print" />&nbsp;Print</a>
 <?php
 			if ((get_first_value("select length(TxAnnotatedText) as value from " . $tbpref . "texts where TxID = " . (int)$currenttext) + 0) > 0) {
 ?>
 			&nbsp; &nbsp; 
-			<a href="print_impr_text.php?text=<?php echo $currenttext; ?>"><img src="icn/tick.png" title="Improved Annotated Text" alt="Improved Annotated Text" />&nbsp;Ann. Text</a>
+			<a href="<?php echo $_ENV['BASE_URL'] ?>/print_impr_text.php?text=<?php echo $currenttext; ?>"><img src="<?php echo $_ENV['BASE_URL']; ?>/icn/tick.png" title="Improved Annotated Text" alt="Improved Annotated Text" />&nbsp;Ann. Text</a>
 <?php
 			}
 ?>
@@ -124,42 +124,43 @@ if (! areCookiesEnabled()) document.write('<p class="red">*** Cookies are not en
 ?>
 
 <ul>
-<li><a href="edit_texts.php">My Texts</a></li>
-<li><a href="edit_archivedtexts.php">My Text Archive</a></li>
-<li><a href="edit_texttags.php">My Text Tags</a>
+<li><a href="<?php echo $_ENV['BASE_URL'] ?>/edit_texts.php">My Texts</a></li>
+<li><a href="<?php echo $_ENV['BASE_URL'] ?>/edit_archivedtexts.php">My Text Archive</a></li>
+<li><a href="<?php echo $_ENV['BASE_URL'] ?>/edit_texttags.php">My Text Tags</a>
 	<br /><br /></li>
-<li><a href="edit_languages.php">My Languages</a>
+<li><a href="<?php echo $_ENV['BASE_URL'] ?>/edit_languages.php">My Languages</a>
 	<br /><br /></li>
-<li><a href="edit_words.php">My Terms (Words and Expressions)</a></li>
-<li><a href="edit_tags.php">My Term Tags</a>
+<li><a href="<?php echo $_ENV['BASE_URL'] ?>/edit_words.php">My Terms (Words and Expressions)</a></li>
+<li><a href="<?php echo $_ENV['BASE_URL'] ?>/edit_tags.php">My Term Tags</a>
 	<br /><br /></li>
-<li><a href="statistics.php">My Statistics</a>
+<li><a href="<?php echo $_ENV['BASE_URL'] ?>/statistics.php">My Statistics</a>
 	<br /><br /></li>
-<li><a href="check_text.php">Check a Text</a></li>
-<li><a href="long_text_import.php">Long Text Import</a></li>
-<li><a href="upload_words.php">Import Terms</a></li>
-<li><a href="backup_restore.php">Backup/Restore/Empty Database</a>
+<li><a href="<?php echo $_ENV['BASE_URL'] ?>/check_text.php">Check a Text</a></li>
+<li><a href="<?php echo $_ENV['BASE_URL'] ?>/long_text_import.php">Long Text Import</a></li>
+<li><a href="<?php echo $_ENV['BASE_URL'] ?>/upload_words.php">Import Terms</a></li>
+<li><a href="<?php echo $_ENV['BASE_URL'] ?>/backup_restore.php">Backup/Restore/Empty Database</a>
 	<br /><br /></li>
-<li><a href="settings.php">Settings/Preferences</a>
+<li><a href="<?php echo $_ENV['BASE_URL'] ?>/settings.php">Settings/Preferences</a>
 
 <?php
 // ********* WORDPRESS LOGOUT *********
 if (isset($_COOKIE['LWT-WP-User'])) {
 ?>
 	<br /><br /></li>
-<li><a href="wp_lwt_stop.php"><span style="font-size:115%; font-weight:bold; color:red;">LOGOUT</span></a> (from WordPress and LWT)
+<li><a href="<?php echo $_ENV['BASE_URL'] ?>/wp_lwt_stop.php"><span style="font-size:115%; font-weight:bold; color:red;">LOGOUT</span></a> (from WordPress and LWT)
 <?php
 }
 // ********* WORDPRESS LOGOUT *********
 ?>
 
 	<br /><br /></li>
-<li><a href="info.htm">Help/Information</a></li>
-<li><a href="mobile.php">Mobile LWT (Experimental)</a></li>
+<li><a href="<?php echo $_ENV['BASE_URL'] ?>/info.htm">Help/Information</a></li>
+<li><a href="<?php echo $_ENV['BASE_URL'] ?>/mobile.php">Mobile LWT (Experimental)</a></li>
+<li><a href="<?php echo $_ENV['BASE_URL'] ?>/logout.php">Logout</a></li>
 </ul>
 
 <p class="smallgray graydotted">&nbsp;</p>
-<table><tr><td class="width50px"><a target="_blank" href="http://unlicense.org/"><img alt="Public Domain" title="Public Domain" src="img/public_domain.png" /></a></td><td><p class="small"><a href="http://lwt.sourceforge.net/" target="_blank">"Learning with Texts" (LWT)</a> is free and unencumbered software released<br />into the <a href="https://en.wikipedia.org/wiki/Public_domain_software" target="_blank">PUBLIC DOMAIN</a>. <a href="http://unlicense.org/" target="_blank">More information and detailed Unlicense ...</a><br />
+<table><tr><td class="width50px"><a target="_blank" href="http://unlicense.org/"><img alt="Public Domain" title="Public Domain" src="<?php echo $_ENV['BASE_URL']; ?>/img/public_domain.png" /></a></td><td><p class="small"><a href="http://lwt.sourceforge.net/" target="_blank">"Learning with Texts" (LWT)</a> is free and unencumbered software released<br />into the <a href="https://en.wikipedia.org/wiki/Public_domain_software" target="_blank">PUBLIC DOMAIN</a>. <a href="http://unlicense.org/" target="_blank">More information and detailed Unlicense ...</a><br />
 
 <?php
 

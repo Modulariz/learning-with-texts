@@ -124,8 +124,8 @@ if (isset($_REQUEST['op'])) {
 echo error_message_with_hide($message,1);
 
 ?>
-<script type="text/javascript" src="js/unloadformcheck.js" charset="utf-8"></script>
-<form class="validate" action="<?php echo $_SERVER['PHP_SELF']; ?>" method="post">
+<script type="text/javascript" src="<?php echo $_ENV['BASE_URL']; ?>/js/unloadformcheck.js" charset="utf-8"></script>
+<form class="validate" action="<?php echo $_ENV['BASE_URL'].$_SERVER['PHP_SELF']; ?>" method="post">
 <table class="tab3" cellspacing="0" cellpadding="5">
 <!-- ******************************************************* -->
 <tr>
@@ -140,7 +140,7 @@ echo error_message_with_hide($message,1);
 <td class="td1 center">
 <input class="notempty posintnumber right setfocus" type="text" 
 name="set-text-h-frameheight-no-audio" data_info="Height of left top frame without audioplayer" value="<?php echo tohtml(getSettingWithDefault('set-text-h-frameheight-no-audio')); ?>" maxlength="3" size="3" /><br />Pixel </td>
-<td class="td1 center"><img src="icn/status-busy.png" title="Field must not be empty" alt="Field must not be empty" /></td>
+<td class="td1 center"><img src="<?php echo $_ENV['BASE_URL']; ?>/icn/status-busy.png" title="Field must not be empty" alt="Field must not be empty" /></td>
 </tr>
 <!-- ******************************************************* -->
 <tr>
@@ -149,7 +149,7 @@ name="set-text-h-frameheight-no-audio" data_info="Height of left top frame witho
 <input class="notempty posintnumber right" type="text" 
 name="set-text-h-frameheight-with-audio" data_info="Height of left top frame with audioplayer" 
 value="<?php echo tohtml(getSettingWithDefault('set-text-h-frameheight-with-audio')); ?>" maxlength="3" size="3" /><br />Pixel </td>
-<td class="td1 center"><img src="icn/status-busy.png" title="Field must not be empty" alt="Field must not be empty" /></td>
+<td class="td1 center"><img src="<?php echo $_ENV['BASE_URL']; ?>/icn/status-busy.png" title="Field must not be empty" alt="Field must not be empty" /></td>
 </tr>
 <!-- ******************************************************* -->
 <tr>
@@ -158,7 +158,7 @@ value="<?php echo tohtml(getSettingWithDefault('set-text-h-frameheight-with-audi
 <input class="notempty posintnumber right" type="text" 
 name="set-text-l-framewidth-percent" data_info="Width of left frames" 
 value="<?php echo tohtml(getSettingWithDefault('set-text-l-framewidth-percent')); ?>" maxlength="2" size="2" /><br />Percent </td>
-<td class="td1 center"><img src="icn/status-busy.png" title="Field must not be empty" alt="Field must not be empty" /></td>
+<td class="td1 center"><img src="<?php echo $_ENV['BASE_URL']; ?>/icn/status-busy.png" title="Field must not be empty" alt="Field must not be empty" /></td>
 </tr>
 <!-- ******************************************************* -->
 <tr>
@@ -167,7 +167,7 @@ value="<?php echo tohtml(getSettingWithDefault('set-text-l-framewidth-percent'))
 <input class="notempty posintnumber right" type="text" 
 name="set-text-r-frameheight-percent"  data_info="Height of right top frame" 
 value="<?php echo tohtml(getSettingWithDefault('set-text-r-frameheight-percent')); ?>" maxlength="2" size="2" /><br />Percent </td>
-<td class="td1 center"><img src="icn/status-busy.png" title="Field must not be empty" alt="Field must not be empty" /></td>
+<td class="td1 center"><img src="<?php echo $_ENV['BASE_URL']; ?>/icn/status-busy.png" title="Field must not be empty" alt="Field must not be empty" /></td>
 </tr>
 <!-- ******************************************************* -->
 <tr>
@@ -177,7 +177,7 @@ value="<?php echo tohtml(getSettingWithDefault('set-text-r-frameheight-percent')
 <input class="notempty posintnumber right" type="text" 
 name="set-test-h-frameheight" data_info="Height of left top frame" 
 value="<?php echo tohtml(getSettingWithDefault('set-test-h-frameheight')); ?>" maxlength="3" size="3" /><br />Pixel </td>
-<td class="td1 center"><img src="icn/status-busy.png" title="Field must not be empty" alt="Field must not be empty" /></td>
+<td class="td1 center"><img src="<?php echo $_ENV['BASE_URL']; ?>/icn/status-busy.png" title="Field must not be empty" alt="Field must not be empty" /></td>
 </tr>
 <!-- ******************************************************* -->
 <tr>
@@ -186,7 +186,7 @@ value="<?php echo tohtml(getSettingWithDefault('set-test-h-frameheight')); ?>" m
 <input class="notempty posintnumber right" type="text" 
 name="set-test-l-framewidth-percent"  data_info="Width of left frames" 
 value="<?php echo tohtml(getSettingWithDefault('set-test-l-framewidth-percent')); ?>" maxlength="2" size="2" /><br />Percent </td>
-<td class="td1 center"><img src="icn/status-busy.png" title="Field must not be empty" alt="Field must not be empty" /></td>
+<td class="td1 center"><img src="<?php echo $_ENV['BASE_URL']; ?>/icn/status-busy.png" title="Field must not be empty" alt="Field must not be empty" /></td>
 </tr>
 <!-- ******************************************************* -->
 <tr>
@@ -195,7 +195,7 @@ value="<?php echo tohtml(getSettingWithDefault('set-test-l-framewidth-percent'))
 <input class="notempty posintnumber right" type="text" 
 name="set-test-r-frameheight-percent"  data_info="Height of right top frame"  
 value="<?php echo tohtml(getSettingWithDefault('set-test-r-frameheight-percent')); ?>" maxlength="2" size="2" /><br />Percent </td>
-<td class="td1 center"><img src="icn/status-busy.png" title="Field must not be empty" alt="Field must not be empty" /></td>
+<td class="td1 center"><img src="<?php echo $_ENV['BASE_URL']; ?>/icn/status-busy.png" title="Field must not be empty" alt="Field must not be empty" /></td>
 </tr>
 <!-- ******************************************************* -->
 <tr>
@@ -204,7 +204,7 @@ value="<?php echo tohtml(getSettingWithDefault('set-test-r-frameheight-percent')
 <input class="notempty zeroposintnumber right" type="text" 
 name="set-test-main-frame-waiting-time" data_info="Waiting time after assessment to display next test" 
 value="<?php echo tohtml(getSettingWithDefault('set-test-main-frame-waiting-time')); ?>" maxlength="4" size="4" /><br />Milliseconds </td>
-<td class="td1 center"><img src="icn/status-busy.png" title="Field must not be empty" alt="Field must not be empty" /></td>
+<td class="td1 center"><img src="<?php echo $_ENV['BASE_URL']; ?>/icn/status-busy.png" title="Field must not be empty" alt="Field must not be empty" /></td>
 </tr>
 <!-- ******************************************************* -->
 <tr>
@@ -213,7 +213,7 @@ value="<?php echo tohtml(getSettingWithDefault('set-test-main-frame-waiting-time
 <input class="notempty zeroposintnumber right" type="text" 
 name="set-test-edit-frame-waiting-time"  data_info="Waiting Time to clear the message/edit frame" 
 value="<?php echo tohtml(getSettingWithDefault('set-test-edit-frame-waiting-time')); ?>" maxlength="8" size="8" /><br />Milliseconds </td>
-<td class="td1 center"><img src="icn/status-busy.png" title="Field must not be empty" alt="Field must not be empty" /></td>
+<td class="td1 center"><img src="<?php echo $_ENV['BASE_URL']; ?>/icn/status-busy.png" title="Field must not be empty" alt="Field must not be empty" /></td>
 </tr>
 <!-- ******************************************************* -->
 <tr>
@@ -227,7 +227,7 @@ getSettingWithDefault('set-mobile-display-mode'), true, true, true);
 ?>
 </select>
 </td>
-<td class="td1 center"><img src="icn/status-busy.png" title="Field must not be empty" alt="Field must not be empty" /></td>
+<td class="td1 center"><img src="<?php echo $_ENV['BASE_URL']; ?>/icn/status-busy.png" title="Field must not be empty" alt="Field must not be empty" /></td>
 </tr>
 <!-- ******************************************************* -->
 <tr>
@@ -241,7 +241,7 @@ getSettingWithDefault('set-text-visit-statuses-via-key'), true, true, true);
 ?>
 </select>
 </td>
-<td class="td1 center"><img src="icn/status-busy.png" title="Field must not be empty" alt="Field must not be empty" /></td>
+<td class="td1 center"><img src="<?php echo $_ENV['BASE_URL']; ?>/icn/status-busy.png" title="Field must not be empty" alt="Field must not be empty" /></td>
 </tr>
 <!-- ******************************************************* -->
 <tr>
@@ -255,7 +255,7 @@ getSettingWithDefault('set-test-sentence-count'));
 ?>
 </select>
 </td>
-<td class="td1 center"><img src="icn/status-busy.png" title="Field must not be empty" alt="Field must not be empty" /></td>
+<td class="td1 center"><img src="<?php echo $_ENV['BASE_URL']; ?>/icn/status-busy.png" title="Field must not be empty" alt="Field must not be empty" /></td>
 </tr>
 <!-- ******************************************************* -->
 <tr>
@@ -269,7 +269,7 @@ getSettingWithDefault('set-term-sentence-count'));
 ?>
 </select>
 </td>
-<td class="td1 center"><img src="icn/status-busy.png" title="Field must not be empty" alt="Field must not be empty" /></td>
+<td class="td1 center"><img src="<?php echo $_ENV['BASE_URL']; ?>/icn/status-busy.png" title="Field must not be empty" alt="Field must not be empty" /></td>
 </tr>
 <!-- ******************************************************* -->
 <tr>
@@ -279,7 +279,7 @@ getSettingWithDefault('set-term-sentence-count'));
 <input class="notempty zeroposintnumber right" type="text" 
 name="set-similar-terms-count"  data_info="Similar terms to be displayed while adding/editing a term" 
 value="<?php echo tohtml(getSettingWithDefault('set-similar-terms-count')); ?>" maxlength="1" size="1" /></td>
-<td class="td1 center"><img src="icn/status-busy.png" title="Field must not be empty" alt="Field must not be empty" /></td>
+<td class="td1 center"><img src="<?php echo $_ENV['BASE_URL']; ?>/icn/status-busy.png" title="Field must not be empty" alt="Field must not be empty" /></td>
 </tr>
 <!-- ******************************************************* -->
 <tr>
@@ -289,7 +289,7 @@ value="<?php echo tohtml(getSettingWithDefault('set-similar-terms-count')); ?>" 
 <input class="notempty center" type="text" 
 name="set-term-translation-delimiters" 
 value="<?php echo tohtml(getSettingWithDefault('set-term-translation-delimiters')); ?>" maxlength="8" size="8" /></td>
-<td class="td1 center"><img src="icn/status-busy.png" title="Field must not be empty" alt="Field must not be empty" /></td>
+<td class="td1 center"><img src="<?php echo $_ENV['BASE_URL']; ?>/icn/status-busy.png" title="Field must not be empty" alt="Field must not be empty" /></td>
 </tr>
 <!-- ******************************************************* -->
 <tr>
@@ -299,7 +299,7 @@ value="<?php echo tohtml(getSettingWithDefault('set-term-translation-delimiters'
 <input class="notempty posintnumber right" type="text" 
 name="set-texts-per-page"  data_info="Texts per Page" 
 value="<?php echo tohtml(getSettingWithDefault('set-texts-per-page')); ?>" maxlength="4" size="4" /> </td>
-<td class="td1 center"><img src="icn/status-busy.png" title="Field must not be empty" alt="Field must not be empty" /></td>
+<td class="td1 center"><img src="<?php echo $_ENV['BASE_URL']; ?>/icn/status-busy.png" title="Field must not be empty" alt="Field must not be empty" /></td>
 </tr>
 <!-- ******************************************************* -->
 <tr>
@@ -312,7 +312,7 @@ getSettingWithDefault('set-show-text-word-counts'));
 ?>
 </select>
 </td>
-<td class="td1 center"><img src="icn/status-busy.png" title="Field must not be empty" alt="Field must not be empty" /></td>
+<td class="td1 center"><img src="<?php echo $_ENV['BASE_URL']; ?>/icn/status-busy.png" title="Field must not be empty" alt="Field must not be empty" /></td>
 </tr>
 <!-- ******************************************************* -->
 <tr>
@@ -321,7 +321,7 @@ getSettingWithDefault('set-show-text-word-counts'));
 <input class="notempty posintnumber right" type="text" 
 name="set-archivedtexts-per-page"  data_info="Archived Texts per Page" 
 value="<?php echo tohtml(getSettingWithDefault('set-archivedtexts-per-page')); ?>" maxlength="4" size="4" /></td>
-<td class="td1 center"><img src="icn/status-busy.png" title="Field must not be empty" alt="Field must not be empty" /></td>
+<td class="td1 center"><img src="<?php echo $_ENV['BASE_URL']; ?>/icn/status-busy.png" title="Field must not be empty" alt="Field must not be empty" /></td>
 </tr>
 <!-- ******************************************************* -->
 <tr>
@@ -330,7 +330,7 @@ value="<?php echo tohtml(getSettingWithDefault('set-archivedtexts-per-page')); ?
 <input class="notempty posintnumber right" type="text" 
 name="set-terms-per-page" data_info="Terms per Page" 
 value="<?php echo tohtml(getSettingWithDefault('set-terms-per-page')); ?>" maxlength="4" size="4" /></td>
-<td class="td1 center"><img src="icn/status-busy.png" title="Field must not be empty" alt="Field must not be empty" /></td>
+<td class="td1 center"><img src="<?php echo $_ENV['BASE_URL']; ?>/icn/status-busy.png" title="Field must not be empty" alt="Field must not be empty" /></td>
 </tr>
 <!-- ******************************************************* -->
 <tr>
@@ -339,7 +339,7 @@ value="<?php echo tohtml(getSettingWithDefault('set-terms-per-page')); ?>" maxle
 <input class="notempty posintnumber right" type="text" 
 name="set-tags-per-page"  data_info="Tags per Page" 
 value="<?php echo tohtml(getSettingWithDefault('set-tags-per-page')); ?>" maxlength="4" size="4" /></td>
-<td class="td1 center"><img src="icn/status-busy.png" title="Field must not be empty" alt="Field must not be empty" /></td>
+<td class="td1 center"><img src="<?php echo $_ENV['BASE_URL']; ?>/icn/status-busy.png" title="Field must not be empty" alt="Field must not be empty" /></td>
 </tr>
 <!-- ******************************************************* -->
 <tr>

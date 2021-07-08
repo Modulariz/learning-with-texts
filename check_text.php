@@ -55,7 +55,7 @@ if (isset($_REQUEST['op'])) {
 } else {
 
 ?>
-<form class="validate" action="<?php echo $_SERVER['PHP_SELF']; ?>" method="post">
+<form class="validate" action="<?php echo $_ENV['BASE_URL'].$_SERVER['PHP_SELF']; ?>" method="post">
 <table class="tab3" cellspacing="0" cellpadding="5">
 <tr>
 <td class="td1 right">Language:</td>
@@ -64,13 +64,13 @@ if (isset($_REQUEST['op'])) {
 <?php
 echo get_languages_selectoptions(getSetting('currentlanguage'),'[Choose...]');
 ?>
-</select> <img src="icn/status-busy.png" title="Field must not be empty" alt="Field must not be empty" />
+</select> <img src="<?php echo $_ENV['BASE_URL']; ?>/icn/status-busy.png" title="Field must not be empty" alt="Field must not be empty" />
 </td>
 </tr>
 <tr>
 <td class="td1 right">Text:<br /><br />(max.<br />65,000<br />bytes)</td>
 <td class="td1">
-<textarea name="TxText" class="notempty checkbytes checkoutsidebmp" data_maxlength="65000" data_info="Text" cols="60" rows="20"></textarea> <img src="icn/status-busy.png" title="Field must not be empty" alt="Field must not be empty" />
+<textarea name="TxText" class="notempty checkbytes checkoutsidebmp" data_maxlength="65000" data_info="Text" cols="60" rows="20"></textarea> <img src="<?php echo $_ENV['BASE_URL']; ?>/icn/status-busy.png" title="Field must not be empty" alt="Field must not be empty" />
 </td>
 </tr>
 <tr>

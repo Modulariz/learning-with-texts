@@ -71,7 +71,7 @@ if (isset($_REQUEST['text'])) {
 	}
 	</style> 
 	
-	<script type="text/javascript" src="js/jquery.js" charset="utf-8"></script>
+	<script type="text/javascript" src="<?php echo $_ENV['BASE_URL']; ?>/js/jquery.js" charset="utf-8"></script>
 	
 	<script type="text/javascript">
 //<![CDATA[
@@ -100,10 +100,10 @@ $(document).ready(init);
 </script>
  
 <div id="frame-h">
-	<iframe id="frame-h-2" src="display_impr_text_header.php?text=<?php echo $_REQUEST['text']; ?>" scrolling="yes" name="header"></iframe>
+	<iframe id="frame-h-2" src="<?php echo $_ENV['BASE_URL']; ?>/display_impr_text_header.php?text=<?php echo $_REQUEST['text']; ?>" scrolling="yes" name="header"></iframe>
 </div>
 <div id="frame-l">
-	<iframe id="frame-l-2" src="display_impr_text_text.php?text=<?php echo $_REQUEST['text']; ?>" scrolling="yes" name="text"></iframe>
+	<iframe id="frame-l-2" src="<?php echo $_ENV['BASE_URL']; ?>/display_impr_text_text.php?text=<?php echo $_REQUEST['text']; ?>" scrolling="yes" name="text"></iframe>
 </div>
 
 <?php 
@@ -113,8 +113,8 @@ $(document).ready(init);
 ?>
 
 <frameset rows="<?php echo (isset($audio) ? getSettingWithDefault('set-text-h-frameheight-with-audio')-90 : getSettingWithDefault('set-text-h-frameheight-no-audio')-90 ); ?>,*">
-	<frame src="display_impr_text_header.php?text=<?php echo $_REQUEST['text']; ?>" scrolling="no" name="header" />			
-	<frame src="display_impr_text_text.php?text=<?php echo $_REQUEST['text']; ?>" scrolling="auto" name="text" />
+	<frame src="<?php echo $_ENV['BASE_URL']; ?>/display_impr_text_header.php?text=<?php echo $_REQUEST['text']; ?>" scrolling="no" name="header" />			
+	<frame src="<?php echo $_ENV['BASE_URL']; ?>/display_impr_text_text.php?text=<?php echo $_REQUEST['text']; ?>" scrolling="auto" name="text" />
 </frameset>
 <noframes><body><p>Sorry - your browser does not support frames.</p></body></noframes>
 </frameset>
@@ -127,7 +127,7 @@ $(document).ready(init);
 
 else {
 
-	header("Location: edit_texts.php");
+	header("Location: ".$_ENV['BASE_URL']."edit_texts.php");
 	exit();
 
 }

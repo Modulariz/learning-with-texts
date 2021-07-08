@@ -190,7 +190,7 @@ make_score_random_insert_update('id') . ')',"Imported");
 
 ?>
 
-	<form enctype="multipart/form-data" class="validate" action="<?php echo $_SERVER['PHP_SELF']; ?>" method="post" onsubmit="{return confirm ('Did you double-check everything?\nAre you sure?');}">
+	<form enctype="multipart/form-data" class="validate" action="<?php echo $_ENV['BASE_URL'].$_SERVER['PHP_SELF']; ?>" method="post" onsubmit="{return confirm ('Did you double-check everything?\nAre you sure?');}">
 	<table class="tab3" cellspacing="0" cellpadding="5">
 	<tr>
 	<td class="td1 center"><b>Language:</b></td>
@@ -199,7 +199,7 @@ make_score_random_insert_update('id') . ')',"Imported");
 	<?php
 	echo get_languages_selectoptions(getSetting('currentlanguage'),'[Choose...]');
 	?>
-	</select> <img src="icn/status-busy.png" title="Field must not be empty" alt="Field must not be empty" /> 
+	</select> <img src="<?php echo $_ENV['BASE_URL']; ?>/icn/status-busy.png" title="Field must not be empty" alt="Field must not be empty" /> 
 	</td>
 	</tr>
 	<tr>
@@ -274,7 +274,7 @@ make_score_random_insert_update('id') . ')',"Imported");
 	</tr>
 	<tr>
 	<td class="td1 center"><b>Status</b> for all uploaded terms:</td>
-	<td class="td1"><select class="notempty" name="WoStatus"><?php echo get_wordstatus_selectoptions(NULL,false,false); ?></select> <img src="icn/status-busy.png" title="Field must not be empty" alt="Field must not be empty" /></td>
+	<td class="td1"><select class="notempty" name="WoStatus"><?php echo get_wordstatus_selectoptions(NULL,false,false); ?></select> <img src="<?php echo $_ENV['BASE_URL']; ?>/icn/status-busy.png" title="Field must not be empty" alt="Field must not be empty" /></td>
 	</tr>
 	<tr>
 	<td class="td1 center" colspan="2"><span class="red2">A DATABASE <input type="button" value="BACKUP" onclick="location.href='backup_restore.php';" /> MAY BE ADVISABLE!<br />PLEASE DOUBLE-CHECK EVERYTHING!</span><br /><input type="button" value="&lt;&lt; Back" onclick="location.href='index.php';" /> &nbsp; &nbsp; &nbsp; | &nbsp; &nbsp; &nbsp; <input type="submit" name="op" value="Import" /></td>

@@ -41,7 +41,7 @@ require_once( 'dbutils.inc.php' );
 require_once( 'utilities.inc.php' );
 
 if ($fixed_tbpref) {
-	header("Location: index.php");
+	header("Location: ".$_ENV['BASE_URL']."index.php");
 	exit(); 
 }
 
@@ -49,7 +49,7 @@ if (isset($_REQUEST['prefix'])) {
 	if($_REQUEST['prefix'] !== '-') {
 		$tbpref = $_REQUEST['prefix'];
 		LWTTableSet ("current_table_prefix", $tbpref);
-		header("Location: index.php");
+		header("Location: ".$_ENV['BASE_URL']."index.php");
 		exit(); 
 	}
 }
@@ -59,7 +59,7 @@ $prefix = getprefixes();
 if (count($prefix) == 0) {
 	$tbpref = '';
 	LWTTableSet ("current_table_prefix", $tbpref);
-	header("Location: index.php");
+	header("Location: ".$_ENV['BASE_URL']."index.php");
 	exit(); 
 }
 
@@ -71,7 +71,7 @@ pagestart('Select Table Set',false);
 
 <tr>
 <th class="th1">
-<form name="f1" class="inline" action="<?php echo $_SERVER['PHP_SELF']; ?>" method="post">
+<form name="f1" class="inline" action="<?php echo $_ENV['BASE_URL'].$_SERVER['PHP_SELF']; ?>" method="post">
 <p>Select: <select name="prefix">
 <option value="" <?php echo ($tbpref == '' ? 'selected="selected"': ''); ?>>Default Table Set</option>
 <?php

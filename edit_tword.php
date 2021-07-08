@@ -167,9 +167,9 @@ else {  // if (! isset($_REQUEST['op']))
 	$scrdir = getScriptDirectionTag($lang);
 
 ?>
-<script type="text/javascript" src="js/unloadformcheck.js" charset="utf-8"></script>
+<script type="text/javascript" src="<?php echo $_ENV['BASE_URL']; ?>/js/unloadformcheck.js" charset="utf-8"></script>
 	
-<form name="editword" class="validate" action="<?php echo $_SERVER['PHP_SELF']; ?>" method="post">
+<form name="editword" class="validate" action="<?php echo $_ENV['BASE_URL'].$_SERVER['PHP_SELF']; ?>" method="post">
 <input type="hidden" name="WoLgID" id="langfield" value="<?php echo $lang; ?>" />
 <input type="hidden" name="WoID" value="<?php echo $wid; ?>" />
 <input type="hidden" name="WoOldStatus" value="<?php echo $status; ?>" />
@@ -177,7 +177,7 @@ else {  // if (! isset($_REQUEST['op']))
 <table class="tab2" cellspacing="0" cellpadding="5">
 <tr title="Only change uppercase/lowercase!">
 <td class="td1 right"><b>Edit Term:</b></td>
-<td class="td1"><input <?php echo $scrdir; ?> class="notempty checkoutsidebmp" data_info="Term" type="text" name="WoText" id="wordfield" value="<?php echo tohtml($term); ?>" maxlength="250" size="35" /> <img src="icn/status-busy.png" title="Field must not be empty" alt="Field must not be empty" />
+<td class="td1"><input <?php echo $scrdir; ?> class="notempty checkoutsidebmp" data_info="Term" type="text" name="WoText" id="wordfield" value="<?php echo tohtml($term); ?>" maxlength="250" size="35" /> <img src="<?php echo $_ENV['BASE_URL']; ?>/icn/status-busy.png" title="Field must not be empty" alt="Field must not be empty" />
 </td></tr>
 <?php print_similar_terms_tabrow(); ?>
 <tr>
@@ -212,7 +212,7 @@ else {  // if (! isset($_REQUEST['op']))
 </tr>
 </table>
 </form>
-<div id="exsent"><span class="click" onclick="do_ajax_show_sentences(<?php echo $lang; ?>, <?php echo prepare_textdata_js($termlc) . ', ' . prepare_textdata_js("document.forms['editword'].WoSentence"); ?>);"><img src="icn/sticky-notes-stack.png" title="Show Sentences" alt="Show Sentences" /> Show Sentences</span></div>	
+<div id="exsent"><span class="click" onclick="do_ajax_show_sentences(<?php echo $lang; ?>, <?php echo prepare_textdata_js($termlc) . ', ' . prepare_textdata_js("document.forms['editword'].WoSentence"); ?>);"><img src="<?php echo $_ENV['BASE_URL']; ?>/icn/sticky-notes-stack.png" title="Show Sentences" alt="Show Sentences" /> Show Sentences</span></div>	
 <?php
 } // if (! isset($_REQUEST['op']))
 

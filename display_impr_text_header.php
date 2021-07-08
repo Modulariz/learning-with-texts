@@ -88,15 +88,15 @@ echo '<h2 class="center" style="margin:5px;margin-top:-10px;">';
 
 <?php
 
-echo '<img id="hidet" style="margin-bottom:-5px;" class="click" src="icn/light-bulb-T.png" title="Toggle Text Display (Now ON)" alt="Toggle Text Display (Now ON)" onclick="do_hide_t();" />';
-echo '<img id="showt" style="display:none; margin-bottom:-5px;" class="click" src="icn/light-bulb-off-T.png" title="Toggle Text Display (Now OFF)" alt="Toggle Text Display (Now OFF)" onclick="do_show_t();" />';
-echo '<img id="hide" style="margin-bottom:-5px;" class="click" src="icn/light-bulb-A.png" title="Toggle Annotation Display (Now ON)" alt="Toggle Annotation Display (Now ON)" onclick="do_hide_a();" />';
-echo '<img id="show" style="display:none; margin-bottom:-5px;" class="click" src="icn/light-bulb-off-A.png" title="Toggle Annotation Display (Now OFF)" alt="Toggle Annotation Display (Now OFF)" onclick="do_show_a();" />';
+echo '<img id="hidet" style="margin-bottom:-5px;" class="click" src="'.$_ENV['BASE_URL'].'/icn/light-bulb-T.png" title="Toggle Text Display (Now ON)" alt="Toggle Text Display (Now ON)" onclick="do_hide_t();" />';
+echo '<img id="showt" style="display:none; margin-bottom:-5px;" class="click" src="'.$_ENV['BASE_URL'].'/icn/light-bulb-off-T.png" title="Toggle Text Display (Now OFF)" alt="Toggle Text Display (Now OFF)" onclick="do_show_t();" />';
+echo '<img id="hide" style="margin-bottom:-5px;" class="click" src="'.$_ENV['BASE_URL'].'/icn/light-bulb-A.png" title="Toggle Annotation Display (Now ON)" alt="Toggle Annotation Display (Now ON)" onclick="do_hide_a();" />';
+echo '<img id="show" style="display:none; margin-bottom:-5px;" class="click" src="'.$_ENV['BASE_URL'].'/icn/light-bulb-off-A.png" title="Toggle Annotation Display (Now OFF)" alt="Toggle Annotation Display (Now OFF)" onclick="do_show_a();" />';
 echo ' &nbsp; &nbsp; ';
 echo tohtml($title);
-echo (isset($sourceURI) ? ' <a href="' . $sourceURI . '" target="_blank"><img src="icn/chain.png" title="Text Source" alt="Text Source" /></a>' : '');
+echo (isset($sourceURI) ? ' <a href="' . $sourceURI . '" target="_blank"><img src="'.$_ENV['BASE_URL'].'/icn/chain.png" title="Text Source" alt="Text Source" /></a>' : '');
 echo getPreviousAndNextTextLinks($textid, 'display_impr_text.php?text=', TRUE, ' &nbsp; &nbsp; ');
-echo ' <img class="click" src="icn/cross.png" title="Close Window" alt="Close Window" onclick="top.close();" /></span></h2>';
+echo ' <img class="click" src="'.$_ENV['BASE_URL'].'/icn/cross.png" title="Close Window" alt="Close Window" onclick="top.close();" /></span></h2>';
 
 makeAudioPlayer($audio);
 

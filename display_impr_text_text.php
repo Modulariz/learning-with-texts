@@ -45,7 +45,7 @@ $ann = get_first_value("select TxAnnotatedText as value from " . $tbpref . "text
 $ann_exists = (strlen($ann) > 0);
 
 if(($textid==0) || (! $ann_exists)) {
-	header("Location: edit_texts.php");
+	header("Location: ".$_ENV['BASE_URL']."edit_texts.php");
 	exit();
 }
 

@@ -197,7 +197,7 @@ else {  // if (! isset($_REQUEST['op']))
 	$titletext = ($new ? "New Term" : "Edit Term") . ": " . $term;
 	pagestart_nobody($titletext);
 ?>
-<script type="text/javascript" src="js/unloadformcheck.js" charset="utf-8"></script>
+<script type="text/javascript" src="<?php echo $_ENV['BASE_URL']; ?>/js/unloadformcheck.js" charset="utf-8"></script>
 <?php
 	$scrdir = getScriptDirectionTag($lang);
 	
@@ -210,7 +210,7 @@ else {  // if (! isset($_REQUEST['op']))
 			
 		?>
 	
-		<form name="newword" class="validate" action="<?php echo $_SERVER['PHP_SELF']; ?>" method="post">
+		<form name="newword" class="validate" action="<?php echo $_ENV['BASE_URL'].$_SERVER['PHP_SELF']; ?>" method="post">
 		<input type="hidden" name="WoLgID" id="langfield" value="<?php echo $lang; ?>" />
 		<input type="hidden" name="WoTextLC" value="<?php echo tohtml($termlc); ?>" />
 		<input type="hidden" name="tid" value="<?php echo $_REQUEST['tid']; ?>" />
@@ -218,7 +218,7 @@ else {  // if (! isset($_REQUEST['op']))
 		<table class="tab2" cellspacing="0" cellpadding="5">
 		<tr title="Only change uppercase/lowercase!">
 		<td class="td1 right"><b>New Term:</b></td>
-		<td class="td1"><input <?php echo $scrdir; ?> class="notempty checkoutsidebmp" data_info="New Term" type="text" name="WoText" id="wordfield" value="<?php echo tohtml($term); ?>" maxlength="250" size="35" /> <img src="icn/status-busy.png" title="Field must not be empty" alt="Field must not be empty" />
+		<td class="td1"><input <?php echo $scrdir; ?> class="notempty checkoutsidebmp" data_info="New Term" type="text" name="WoText" id="wordfield" value="<?php echo tohtml($term); ?>" maxlength="250" size="35" /> <img src="<?php echo $_ENV['BASE_URL']; ?>/icn/status-busy.png" title="Field must not be empty" alt="Field must not be empty" />
 		</td></tr>
 		<?php print_similar_terms_tabrow(); ?>
 		<tr>
@@ -254,7 +254,7 @@ else {  // if (! isset($_REQUEST['op']))
 		</tr>
 		</table>
 		</form>
-		<div id="exsent"><span class="click" onclick="do_ajax_show_sentences(<?php echo $lang; ?>, <?php echo prepare_textdata_js($termlc) . ', ' . prepare_textdata_js("document.forms['newword'].WoSentence"); ?>);"><img src="icn/sticky-notes-stack.png" title="Show Sentences" alt="Show Sentences" /> Show Sentences</span></div>	
+		<div id="exsent"><span class="click" onclick="do_ajax_show_sentences(<?php echo $lang; ?>, <?php echo prepare_textdata_js($termlc) . ', ' . prepare_textdata_js("document.forms['newword'].WoSentence"); ?>);"><img src="<?php echo $_ENV['BASE_URL']; ?>/icn/sticky-notes-stack.png" title="Show Sentences" alt="Show Sentences" /> Show Sentences</span></div>	
 		<?php
 	}
 	
@@ -278,7 +278,7 @@ else {  // if (! isset($_REQUEST['op']))
 			if($transl == '*') $transl='';
 			?>
 		
-			<form name="editword" class="validate" action="<?php echo $_SERVER['PHP_SELF']; ?>" method="post">
+			<form name="editword" class="validate" action="<?php echo $_ENV['BASE_URL'].$_SERVER['PHP_SELF']; ?>" method="post">
 			<input type="hidden" name="WoLgID" id="langfield" value="<?php echo $lang; ?>" />
 			<input type="hidden" name="WoID" value="<?php echo $wid; ?>" />
 			<input type="hidden" name="WoOldStatus" value="<?php echo $record['WoStatus']; ?>" />
@@ -289,7 +289,7 @@ else {  // if (! isset($_REQUEST['op']))
 			<table class="tab2" cellspacing="0" cellpadding="5">
 			<tr title="Only change uppercase/lowercase!">
 			<td class="td1 right"><b>Edit Term:</b></td>
-			<td class="td1"><input <?php echo $scrdir; ?> class="notempty checkoutsidebmp" data_info="Term" type="text" name="WoText" id="wordfield" value="<?php echo tohtml($term); ?>" maxlength="250" size="35" /> <img src="icn/status-busy.png" title="Field must not be empty" alt="Field must not be empty" />
+			<td class="td1"><input <?php echo $scrdir; ?> class="notempty checkoutsidebmp" data_info="Term" type="text" name="WoText" id="wordfield" value="<?php echo tohtml($term); ?>" maxlength="250" size="35" /> <img src="<?php echo $_ENV['BASE_URL']; ?>/icn/status-busy.png" title="Field must not be empty" alt="Field must not be empty" />
 			</td></tr>
 			<?php print_similar_terms_tabrow(); ?>
 			<tr>
@@ -325,7 +325,7 @@ else {  // if (! isset($_REQUEST['op']))
 			</tr>
 			</table>
 			</form>
-			<div id="exsent"><span class="click" onclick="do_ajax_show_sentences(<?php echo $lang; ?>, <?php echo prepare_textdata_js($termlc) . ', ' . prepare_textdata_js("document.forms['editword'].WoSentence"); ?>);"><img src="icn/sticky-notes-stack.png" title="Show Sentences" alt="Show Sentences" /> Show Sentences</span></div>	
+			<div id="exsent"><span class="click" onclick="do_ajax_show_sentences(<?php echo $lang; ?>, <?php echo prepare_textdata_js($termlc) . ', ' . prepare_textdata_js("document.forms['editword'].WoSentence"); ?>);"><img src="<?php echo $_ENV['BASE_URL']; ?>/icn/sticky-notes-stack.png" title="Show Sentences" alt="Show Sentences" /> Show Sentences</span></div>	
 			<?php
 		}
 		mysqli_free_result($res);

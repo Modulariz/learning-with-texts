@@ -136,7 +136,7 @@ if (isset($_REQUEST['markaction'])) {
 				}
 				elseif ($markaction == 'deltag' ) {
 					$message = removetaglist($actiondata,$list);
-					header("Location: edit_words.php");
+					header("Location: ".$_ENV['BASE_URL']."edit_words.php");
 					exit();
 				}
 				elseif ($markaction == 'spl1' ) {
@@ -180,7 +180,7 @@ if (isset($_REQUEST['markaction'])) {
 				}
 				elseif ($markaction == 'test' ) {
 					$_SESSION['testsql'] = ' ' . $tbpref . 'words where WoID in ' . $list . ' ';
-					header("Location: do_test.php?selection=1");
+					header("Location: ".$_ENV['BASE_URL']."do_test.php?selection=1");
 					exit();
 				}
 			}
@@ -250,7 +250,7 @@ if (isset($_REQUEST['allaction'])) {
 		}
 		mysqli_free_result($res);
 		if ($allaction == 'deltagall') {
-			header("Location: edit_words.php");
+			header("Location: ".$_ENV['BASE_URL']."edit_words.php");
 			exit();
 		}
 		if ($allaction == 'addtagall') {
@@ -305,7 +305,7 @@ if (isset($_REQUEST['allaction'])) {
 		$list .= ")";
 		mysqli_free_result($res);
 		$_SESSION['testsql'] = ' ' . $tbpref . 'words where WoID in ' . $list . ' ';
-		header("Location: do_test.php?selection=1");
+		header("Location: ".$_ENV['BASE_URL']."do_test.php?selection=1");
 		exit();
 	}
 
@@ -375,8 +375,8 @@ if (isset($_REQUEST['new']) && isset($_REQUEST['lang'])) {
 	?>
 
 	<h4>New Term</h4>
-	<script type="text/javascript" src="js/unloadformcheck.js" charset="utf-8"></script>	
-	<form name="newword" class="validate" action="<?php echo $_SERVER['PHP_SELF']; ?>" method="post">
+	<script type="text/javascript" src="<?php echo $_ENV['BASE_URL']; ?>/js/unloadformcheck.js" charset="utf-8"></script>	
+	<form name="newword" class="validate" action="<?php echo $_ENV['BASE_URL'].$_SERVER['PHP_SELF']; ?>" method="post">
 	<input type="hidden" name="WoLgID" id="langfield" value="<?php echo $_REQUEST['lang']; ?>" />
 	<table class="tab3" cellspacing="0" cellpadding="5">
 	<tr>
@@ -385,7 +385,7 @@ if (isset($_REQUEST['new']) && isset($_REQUEST['lang'])) {
 	</tr>
 	<tr>
 	<td class="td1 right">Term:</td>
-	<td class="td1"><input <?php echo $scrdir; ?> class="notempty setfocus checkoutsidebmp" data_info="Term" type="text" name="WoText" id="wordfield" value="" maxlength="250" size="40" /> <img src="icn/status-busy.png" title="Field must not be empty" alt="Field must not be empty" /></td>
+	<td class="td1"><input <?php echo $scrdir; ?> class="notempty setfocus checkoutsidebmp" data_info="Term" type="text" name="WoText" id="wordfield" value="" maxlength="250" size="40" /> <img src="<?php echo $_ENV['BASE_URL']; ?>/icn/status-busy.png" title="Field must not be empty" alt="Field must not be empty" /></td>
 	</tr>
 	<?php print_similar_terms_tabrow(); ?>	
 	<tr>
@@ -442,8 +442,8 @@ elseif (isset($_REQUEST['chg'])) {
 		?>
 	
 		<h4>Edit Term</h4>
-		<script type="text/javascript" src="js/unloadformcheck.js" charset="utf-8"></script>	
-		<form name="editword" class="validate" action="<?php echo $_SERVER['PHP_SELF']; ?>#rec<?php echo $_REQUEST['chg']; ?>" method="post">
+		<script type="text/javascript" src="<?php echo $_ENV['BASE_URL']; ?>/js/unloadformcheck.js" charset="utf-8"></script>	
+		<form name="editword" class="validate" action="<?php echo $_ENV['BASE_URL'].$_SERVER['PHP_SELF']; ?>#rec<?php echo $_REQUEST['chg']; ?>" method="post">
 		<input type="hidden" name="WoID" value="<?php echo $record['WoID']; ?>" />
 		<input type="hidden" name="WoLgID" id="langfield" value="<?php echo $record['WoLgID']; ?>" />
 		<input type="hidden" name="WoOldStatus" value="<?php echo $record['WoStatus']; ?>" />
@@ -454,7 +454,7 @@ elseif (isset($_REQUEST['chg'])) {
 		</tr>
 		<tr title="Normally only change uppercase/lowercase here!">
 		<td class="td1 right">Term:</td>
-		<td class="td1"><input <?php echo $scrdir; ?> class="notempty setfocus checkoutsidebmp" data_info="Term" type="text" name="WoText" id="wordfield" value="<?php echo tohtml($record['WoText']); ?>" maxlength="250" size="40" /> <img src="icn/status-busy.png" title="Field must not be empty" alt="Field must not be empty" />
+		<td class="td1"><input <?php echo $scrdir; ?> class="notempty setfocus checkoutsidebmp" data_info="Term" type="text" name="WoText" id="wordfield" value="<?php echo tohtml($record['WoText']); ?>" maxlength="250" size="40" /> <img src="<?php echo $_ENV['BASE_URL']; ?>/icn/status-busy.png" title="Field must not be empty" alt="Field must not be empty" />
 		</td></tr>
 		<?php print_similar_terms_tabrow(); ?>
 		<tr>
@@ -491,7 +491,7 @@ elseif (isset($_REQUEST['chg'])) {
 		</tr>
 		</table>
 		</form>
-		<div id="exsent"><span class="click" onclick="do_ajax_show_sentences(<?php echo $record['LgID']; ?>, <?php echo prepare_textdata_js($wordlc) . ', ' . prepare_textdata_js("document.forms['editword'].WoSentence"); ?>);"><img src="icn/sticky-notes-stack.png" title="Show Sentences" alt="Show Sentences" /> Show Sentences</span></div>	
+		<div id="exsent"><span class="click" onclick="do_ajax_show_sentences(<?php echo $record['LgID']; ?>, <?php echo prepare_textdata_js($wordlc) . ', ' . prepare_textdata_js("document.forms['editword'].WoSentence"); ?>);"><img src="<?php echo $_ENV['BASE_URL']; ?>/icn/sticky-notes-stack.png" title="Show Sentences" alt="Show Sentences" /> Show Sentences</span></div>	
 <?php
 	}
 	mysqli_free_result($res);
@@ -534,11 +534,11 @@ else {
 
 	if ($currentlang != '') {
 ?>
-<p><a href="<?php echo $_SERVER['PHP_SELF']; ?>?new=1&amp;lang=<?php echo $currentlang; ?>"><img src="icn/plus-button.png" title="New" alt="New" /> New <?php echo tohtml(getLanguage($currentlang)); ?> Term ...</a></p>
+<p><a href="<?php echo $_ENV['BASE_URL'].$_SERVER['PHP_SELF']; ?>?new=1&amp;lang=<?php echo $currentlang; ?>"><img src="<?php echo $_ENV['BASE_URL']; ?>/icn/plus-button.png" title="New" alt="New" /> New <?php echo tohtml(getLanguage($currentlang)); ?> Term ...</a></p>
 <?php
 	} else {
 ?>
-<p><img src="icn/plus-button.png" title="New" alt="New" /> New Term? - Set Language Filter first ...</p>
+<p><img src="<?php echo $_ENV['BASE_URL']; ?>/icn/plus-button.png" title="New" alt="New" /> New Term? - Set Language Filter first ...</p>
 <?php
 	}
 ?>
@@ -546,7 +546,7 @@ else {
 <form name="form1" action="#" onsubmit="document.form1.querybutton.click(); return false;">
 <table class="tab1" cellspacing="0" cellpadding="5">
 <tr>
-<th class="th1" colspan="4">Filter <img src="icn/funnel.png" title="Filter" alt="Filter" />&nbsp;
+<th class="th1" colspan="4">Filter <img src="<?php echo $_ENV['BASE_URL']; ?>/icn/funnel.png" title="Filter" alt="Filter" />&nbsp;
 <input type="button" value="Reset All" onclick="resetAll('edit_words.php');" /></th>
 </tr>
 <tr>
@@ -605,11 +605,11 @@ if ($recno==0) {
 <?php
 } else {
 ?>
-<form name="form2" action="<?php echo $_SERVER['PHP_SELF']; ?>" method="post">
+<form name="form2" action="<?php echo $_ENV['BASE_URL'].$_SERVER['PHP_SELF']; ?>" method="post">
 <input type="hidden" name="data" value="" />
 <table class="tab1" cellspacing="0" cellpadding="5">
 <tr><th class="th1 center" colspan="2">
-Multi Actions <img src="icn/lightning.png" title="Multi Actions" alt="Multi Actions" />
+Multi Actions <img src="<?php echo $_ENV['BASE_URL']; ?>/icn/lightning.png" title="Multi Actions" alt="Multi Actions" />
 </th></tr>
 <tr><td class="td1 center" colspan="2">
 <b>ALL</b> <?php echo ($recno == 1 ? '1 Term' : $recno . ' Terms'); ?>:&nbsp; 
@@ -629,7 +629,7 @@ Multi Actions <img src="icn/lightning.png" title="Multi Actions" alt="Multi Acti
 <th class="th1 sorttable_nosort">Act.</th>
 <?php if ($currentlang == '') echo '<th class="th1 clickable">Lang.</th>'; ?>
 <th class="th1 clickable">Term /<br />Romanization</th>
-<th class="th1 clickable">Translation [Tags]<br /><span id="waitinfo">Please <img src="icn/waiting2.gif" /> wait ...</span></th>
+<th class="th1 clickable">Translation [Tags]<br /><span id="waitinfo">Please <img src="<?php echo $_ENV['BASE_URL']; ?>/icn/waiting2.gif" /> wait ...</span></th>
 <th class="th1 sorttable_nosort">Se.<br />?</th>
 <th class="th1 sorttable_numeric clickable">Stat./<br />Days</th>
 <th class="th1 sorttable_numeric clickable">Score<br />%</th>
@@ -668,15 +668,15 @@ while ($record = mysqli_fetch_assoc($res)) {
 	$days = $record['Days'];
 	if ( $record['WoStatus'] > 5 ) $days="-";
 	$score = $record['Score'];
-	if ( $score < 0 ) $score='<span class="scorered">0 <img src="icn/status-busy.png" title="Test today!" alt="Test today!" /></span>';
-	else $score='<span class="scoregreen">' . floor($score) . ($record['Score2'] < 0 ? ' <img src="icn/status-away.png" title="Test tomorrow!" alt="Test tomorrow!" />' : ' <img src="icn/status.png" title="-" alt="-" />') . '</span>';
+	if ( $score < 0 ) $score='<span class="scorered">0 <img src="'.$_ENV['BASE_URL'].'/icn/status-busy.png" title="Test today!" alt="Test today!" /></span>';
+	else $score='<span class="scoregreen">' . floor($score) . ($record['Score2'] < 0 ? ' <img src="'.$_ENV['BASE_URL'].'/icn/status-away.png" title="Test tomorrow!" alt="Test tomorrow!" />' : ' <img src="'.$_ENV['BASE_URL'].'/icn/status.png" title="-" alt="-" />') . '</span>';
 	echo '<tr>';
 	echo '<td class="td1 center"><a name="rec' . $record['WoID'] . '"><input name="marked[]" type="checkbox" class="markcheck" value="' . $record['WoID'] . '" ' . checkTest($record['WoID'], 'marked') . ' /></a></td>';
-	echo '<td class="td1 center" nowrap="nowrap">&nbsp;<a href="' . $_SERVER['PHP_SELF'] . '?chg=' . $record['WoID'] . '"><img src="icn/sticky-note--pencil.png" title="Edit" alt="Edit" /></a>&nbsp; <a class="confirmdelete" href="' . $_SERVER['PHP_SELF'] . '?del=' . $record['WoID'] . '"><img src="icn/minus-button.png" title="Delete" alt="Delete" /></a>&nbsp;</td>';
+	echo '<td class="td1 center" nowrap="nowrap">&nbsp;<a href="' . $_ENV['BASE_URL'].$_SERVER['PHP_SELF'] . '?chg=' . $record['WoID'] . '"><img src="'.$_ENV['BASE_URL'].'/icn/sticky-note--pencil.png" title="Edit" alt="Edit" /></a>&nbsp; <a class="confirmdelete" href="' . $_ENV['BASE_URL'].$_SERVER['PHP_SELF'] . '?del=' . $record['WoID'] . '"><img src="'.$_ENV['BASE_URL'].'/icn/minus-button.png" title="Delete" alt="Delete" /></a>&nbsp;</td>';
 	if ($currentlang == '') echo '<td class="td1 center">' . tohtml($record['LgName']) . '</td>';
 	echo '<td class="td1 "><span' . ($record['LgRightToLeft'] ? ' dir="rtl" ' : '') . '>' . tohtml($record['WoText']) . '</span>' . ($record['WoRomanization'] != '' ? (' / <span id="roman' . $record['WoID'] . '" class="edit_area clickedit">' . tohtml(repl_tab_nl($record['WoRomanization'])) . '</span>') : (' / <span id="roman' . $record['WoID'] . '" class="edit_area clickedit">*</span>')) . '</td>';
 	echo '<td class="td1"><span id="trans' . $record['WoID'] . '" class="edit_area clickedit">' . tohtml(repl_tab_nl($record['WoTranslation'])) . '</span> <span class="smallgray2">' . tohtml($record['taglist']) . '</span></td>';
-	echo '<td class="td1 center"><b>' . ($record['SentOK']!=0 ? '<img src="icn/status.png" title="' . tohtml($record['WoSentence']) . '" alt="Yes" />' : '<img src="icn/status-busy.png" title="(No valid sentence)" alt="No" />') . '</b></td>';
+	echo '<td class="td1 center"><b>' . ($record['SentOK']!=0 ? '<img src="'.$_ENV['BASE_URL'].'/icn/status.png" title="' . tohtml($record['WoSentence']) . '" alt="Yes" />' : '<img src="'.$_ENV['BASE_URL'].'/icn/status-busy.png" title="(No valid sentence)" alt="No" />') . '</b></td>';
 	echo '<td class="td1 center" title="' . tohtml(get_status_name($record['WoStatus'])) . '">' . tohtml(get_status_abbr($record['WoStatus'])) . ($record['WoStatus'] < 98 ? '/' . $days : '') . '</td>';
 	echo '<td class="td1 center" nowrap="nowrap">' . $score . '</td>';
 	if ($currentsort == 6) {

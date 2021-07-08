@@ -55,7 +55,7 @@ $ok = FALSE;
 pagestart_nobody('');
 $titletext = '<a href="http://glosbe.com/' . $from . '/' . $dest . '/' . $phrase . '">Glosbe Dictionary (' . tohtml($from) . "-" . tohtml($dest) . "):  &nbsp; <span class=\"red2\">" . tohtml($phrase) . "</span></a>";
 echo '<h3>' . $titletext . '</h3>';
-echo '<p>(Click on <img src="icn/tick-button.png" title="Choose" alt="Choose" /> to copy word(s) into above term)<br />&nbsp;</p>';
+echo '<p>(Click on <img src="'.$_ENV['BASE_URL'].'/icn/tick-button.png" title="Choose" alt="Choose" /> to copy word(s) into above term)<br />&nbsp;</p>';
 
 ?>
 <script type="text/javascript">
@@ -127,7 +127,7 @@ if ( $ok ) {
 			}
 			if ($word != '') {
 				$word = trim(strip_tags($word));
-				echo '<span class="click" onclick="addTranslation(' . prepare_textdata_js($word) . ');"><img src="icn/tick-button.png" title="Copy" alt="Copy" /> &nbsp; ' . $word . '</span><br />' . "\n";
+				echo '<span class="click" onclick="addTranslation(' . prepare_textdata_js($word) . ');"><img src="'.$_ENV['BASE_URL'].'/icn/tick-button.png" title="Copy" alt="Copy" /> &nbsp; ' . $word . '</span><br />' . "\n";
 				$i++;
 			}
 		}
@@ -177,7 +177,7 @@ if ( $ok ) {
 						}
 						if ($word != '') {
 							$word = trim(strip_tags($word));
-							echo '<span class="click" onclick="addTranslation(' . prepare_textdata_js($word) . ');"><img src="icn/tick-button.png" title="Copy" alt="Copy" /> &nbsp; ' . $word . '</span><br />' . "\n";
+							echo '<span class="click" onclick="addTranslation(' . prepare_textdata_js($word) . ');"><img src="'.$_ENV['BASE_URL'].'/icn/tick-button.png" title="Copy" alt="Copy" /> &nbsp; ' . $word . '</span><br />' . "\n";
 							$i++;
 						}
 					}

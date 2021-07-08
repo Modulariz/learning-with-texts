@@ -137,20 +137,20 @@ function getPreviousAndNextTextLinks($textid,$url,$onlyann,$add) {
 		if($list[$i] == $textid) {
 			if ($list[$i-1] !== 0) {
 				$title = tohtml(getTextTitle($list[$i-1]));
-				$prev = '<a href="' . $url . $list[$i-1] . '" target="_top"><img src="icn/navigation-180-button.png" title="Previous Text: ' . $title . '" alt="Previous Text: ' . $title . '" /></a>';
+				$prev = '<a href="' . $url . $list[$i-1] . '" target="_top"><img src="'.$_ENV['BASE_URL'].'/icn/navigation-180-button.png" title="Previous Text: ' . $title . '" alt="Previous Text: ' . $title . '" /></a>';
 			}
 			else
-				$prev = '<img src="icn/navigation-180-button-light.png" title="No Previous Text" alt="No Previous Text" />';
+				$prev = '<img src="'.$_ENV['BASE_URL'].'/icn/navigation-180-button-light.png" title="No Previous Text" alt="No Previous Text" />';
 			if ($list[$i+1] !== 0) {
 				$title = tohtml(getTextTitle($list[$i+1]));
-				$next = '<a href="' . $url . $list[$i+1] . '" target="_top"><img src="icn/navigation-000-button.png" title="Next Text: ' . $title . '" alt="Next Text: ' . $title . '" /></a>';
+				$next = '<a href="' . $url . $list[$i+1] . '" target="_top"><img src="'.$_ENV['BASE_URL'].'/icn/navigation-000-button.png" title="Next Text: ' . $title . '" alt="Next Text: ' . $title . '" /></a>';
 			}
 			else
-				$next = '<img src="icn/navigation-000-button-light.png" title="No Next Text" alt="No Next Text" />';
+				$next = '<img src="'.$_ENV['BASE_URL'].'/icn/navigation-000-button-light.png" title="No Next Text" alt="No Next Text" />';
 			return $add . $prev . ' ' . $next;
 		}
 	}
-	return $add . '<img src="icn/navigation-180-button-light.png" title="No Previous Text" alt="No Previous Text" /> <img src="icn/navigation-000-button-light.png" title="No Next Text" alt="No Next Text" />';
+	return $add . '<img src="'.$_ENV['BASE_URL'].'/icn/navigation-180-button-light.png" title="No Previous Text" alt="No Previous Text" /> <img src="'.$_ENV['BASE_URL'].'/icn/navigation-000-button-light.png" title="No Next Text" alt="No Next Text" />';
 }
 
 // -------------------------------------------------------------
@@ -545,6 +545,7 @@ function framesetheader($title) {
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head>
 	<meta http-equiv="content-type" content="text/html; charset=utf-8" />
+	
 
 <!-- ***********************************************************
 "Learning with Texts" (LWT) is free and unencumbered software 
@@ -639,15 +640,19 @@ For more information, please refer to [http://unlicense.org/].
 	<style type="text/css">
 	<?php echo $addcss . "\n"; ?>
 	</style>
-	
-	<script type="text/javascript" src="js/jquery.js" charset="utf-8"></script>
-	<script type="text/javascript" src="js/jquery.scrollTo.min.js" charset="utf-8"></script>
-	<script type="text/javascript" src="js/jquery-ui.min.js"  charset="utf-8"></script>
-	<script type="text/javascript" src="js/tag-it.js" charset="utf-8"></script>
-	<script type="text/javascript" src="js/jquery.jeditable.mini.js" charset="utf-8"></script>
-	<script type="text/javascript" src="js/sorttable/sorttable.js" charset="utf-8"></script>
-	<script type="text/javascript" src="js/countuptimer.js" charset="utf-8"></script>
-	<script type="text/javascript" src="js/overlib/overlib_mini.js" charset="utf-8"></script>
+	<script type="text/javascript">
+		var $_ENV = {
+			BASE_URL: "<?php echo $_ENV['BASE_URL']; ?>"
+		}
+	</script>
+	<script type="text/javascript" src="<?php echo $_ENV['BASE_URL']; ?>/js/jquery.js" charset="utf-8"></script>
+	<script type="text/javascript" src="<?php echo $_ENV['BASE_URL']; ?>/js/jquery.scrollTo.min.js" charset="utf-8"></script>
+	<script type="text/javascript" src="<?php echo $_ENV['BASE_URL']; ?>/js/jquery-ui.min.js"  charset="utf-8"></script>
+	<script type="text/javascript" src="<?php echo $_ENV['BASE_URL']; ?>/js/tag-it.js" charset="utf-8"></script>
+	<script type="text/javascript" src="<?php echo $_ENV['BASE_URL']; ?>/js/jquery.jeditable.mini.js" charset="utf-8"></script>
+	<script type="text/javascript" src="<?php echo $_ENV['BASE_URL']; ?>/js/sorttable/sorttable.js" charset="utf-8"></script>
+	<script type="text/javascript" src="<?php echo $_ENV['BASE_URL']; ?>/js/countuptimer.js" charset="utf-8"></script>
+	<script type="text/javascript" src="<?php echo $_ENV['BASE_URL']; ?>/js/overlib/overlib_mini.js" charset="utf-8"></script>
 	<!-- URLBASE : "<?php echo tohtml(url_base()); ?>" -->
 	<!-- TBPREF  : "<?php echo tohtml($tbpref); ?>" -->
 	<script type="text/javascript">
@@ -657,8 +662,8 @@ For more information, please refer to [http://unlicense.org/].
 	<?php echo "var TEXTTAGS = " . json_encode(get_texttags()) . ";\n"; ?>
 	//]]>
 	</script>
-	<script type="text/javascript" src="js/pgm.js" charset="utf-8"></script>
-	<script type="text/javascript" src="js/jq_pgm.js" charset="utf-8"></script>
+	<script type="text/javascript" src="<?php echo $_ENV['BASE_URL']; ?>/js/pgm.js" charset="utf-8"></script>
+	<script type="text/javascript" src="<?php echo $_ENV['BASE_URL']; ?>/js/jq_pgm.js" charset="utf-8"></script>
 	
 	<title>LWT :: <?php echo $titletext; ?></title>
 </head>
@@ -674,7 +679,7 @@ function pagestart($titletext,$close) {
 	global $debug;
 	pagestart_nobody($titletext);
 	echo '<h4>';
-	if ($close) echo '<a href="index.php" target="_top">';
+	if ($close) echo '<a href="'.$_ENV['BASE_URL'].'/index.php" target="_top">';
 	echo_lwt_logo();
 	echo "LWT";
 	if ($close) {
@@ -718,7 +723,7 @@ function echo_lwt_logo() {
 	global $tbpref;
 	$pref = substr($tbpref,0,-1);
 	if($pref == '') $pref = 'Default Table Set';
-	echo '<img class="lwtlogo" src="img/lwt_icon.png"  title="LWT - Current Table Set: ' . tohtml($pref) . '" alt="LWT - Current Table Set: ' . tohtml($pref) . '" />';
+	echo '<img class="lwtlogo" src="'. $_ENV['BASE_URL']. '/img/lwt_icon.png"  title="LWT - Current Table Set: ' . tohtml($pref) . '" alt="LWT - Current Table Set: ' . tohtml($pref) . '" />';
 }
 
 // -------------------------------------------------------------
@@ -762,7 +767,7 @@ function selectmediapath($f) {
 		$r .= selectmediapathoptions('media');
 		$r .= '</select> ';
 	}
-	$r .= ' &nbsp; &nbsp; <span class="click" onclick="do_ajax_update_media_select();"><img src="icn/arrow-circle-135.png" title="Refresh Media Selection" alt="Refresh Media Selection" /> Refresh</span>';
+	$r .= ' &nbsp; &nbsp; <span class="click" onclick="do_ajax_update_media_select();"><img src="'.$_ENV['BASE_URL'].'/icn/arrow-circle-135.png" title="Refresh Media Selection" alt="Refresh Media Selection" /> Refresh</span>';
 	return $r;
 }
 
@@ -1276,13 +1281,13 @@ function make_status_controls_test_table($score, $status, $wordid) {
 		$scoret = get_status_abbr($status);
 		
 	if ( $status <= 5 || $status == 98 ) 
-		$plus = '<img src="icn/plus.png" class="click" title="+" alt="+" onclick="changeTableTestStatus(' . $wordid .',true);" />';
+		$plus = '<img src="'.$_ENV['BASE_URL'].'/icn/plus.png" class="click" title="+" alt="+" onclick="changeTableTestStatus(' . $wordid .',true);" />';
 	else
-		$plus = '<img src="icn/placeholder.png" title="" alt="" />';
+		$plus = '<img src="'.$_ENV['BASE_URL'].'/icn/placeholder.png" title="" alt="" />';
 	if ( $status >= 1 ) 
-		$minus = '<img src="icn/minus.png" class="click" title="-" alt="-" onclick="changeTableTestStatus(' . $wordid .',false);" />';
+		$minus = '<img src="'.$_ENV['BASE_URL'].'/icn/minus.png" class="click" title="-" alt="-" onclick="changeTableTestStatus(' . $wordid .',false);" />';
 	else
-		$minus = '<img src="icn/placeholder.png" title="" alt="" />';
+		$minus = '<img src="'.$_ENV['BASE_URL'].'/icn/placeholder.png" title="" alt="" />';
 	return ($status == 98 ? '' : $minus . ' ') . $scoret . ($status == 99 ? '' : ' ' . $plus);
 }
 
@@ -1656,13 +1661,13 @@ function get_texts_selectoptions($lang,$v) {
 function makePager ($currentpage, $pages, $script, $formname, $inst) {
 	if ($currentpage > 1) { 
 ?>
-&nbsp; &nbsp;<a href="<?php echo $script; ?>?page=1"><img src="icn/control-stop-180.png" title="First Page" alt="First Page" /></a>&nbsp;
-<a href="<?php echo $script; ?>?page=<?php echo $currentpage-1; ?>"><img  src="icn/control-180.png" title="Previous Page" alt="Previous Page" /></a>&nbsp;
+&nbsp; &nbsp;<a href="<?php echo $script; ?>?page=1"><img src="<?php echo $_ENV['BASE_URL']; ?>/icn/control-stop-180.png" title="First Page" alt="First Page" /></a>&nbsp;
+<a href="<?php echo $script; ?>?page=<?php echo $currentpage-1; ?>"><img  src="<?php echo $_ENV['BASE_URL']; ?>/icn/control-180.png" title="Previous Page" alt="Previous Page" /></a>&nbsp;
 <?php
 	} else {
 ?>
-&nbsp; &nbsp;<img src="icn/placeholder.png" alt="-" />&nbsp;
-<img src="icn/placeholder.png" alt="-" />&nbsp;
+&nbsp; &nbsp;<img src="<?php echo $_ENV['BASE_URL']; ?>/icn/placeholder.png" alt="-" />&nbsp;
+<img src="<?php echo $_ENV['BASE_URL']; ?>/icn/placeholder.png" alt="-" />&nbsp;
 <?php
 	} 
 ?>
@@ -1677,13 +1682,13 @@ Page
 	echo ' of ' . $pages . '&nbsp; ';
 	if ($currentpage < $pages) { 
 ?>
-<a href="<?php echo $script; ?>?page=<?php echo $currentpage+1; ?>"><img src="icn/control.png" title="Next Page" alt="Next Page" /></a>&nbsp;
-<a href="<?php echo $script; ?>?page=<?php echo $pages; ?>"><img src="icn/control-stop.png" title="Last Page" alt="Last Page" /></a>&nbsp; &nbsp;
+<a href="<?php echo $script; ?>?page=<?php echo $currentpage+1; ?>"><img src="<?php echo $_ENV['BASE_URL']; ?>/icn/control.png" title="Next Page" alt="Next Page" /></a>&nbsp;
+<a href="<?php echo $script; ?>?page=<?php echo $pages; ?>"><img src="<?php echo $_ENV['BASE_URL']; ?>/icn/control-stop.png" title="Last Page" alt="Last Page" /></a>&nbsp; &nbsp;
 <?php 
 	} else {
 ?>
-<img src="icn/placeholder.png" alt="-" />&nbsp;
-<img src="icn/placeholder.png" alt="-" />&nbsp; &nbsp; 
+<img src="<?php echo $_ENV['BASE_URL']; ?>/icn/placeholder.png" alt="-" />&nbsp;
+<img src="<?php echo $_ENV['BASE_URL']; ?>/icn/placeholder.png" alt="-" />&nbsp; &nbsp; 
 <?php
 	}
 }
@@ -2270,7 +2275,7 @@ function getSentence($seid, $wordlc,$mode) {
 
 function get20Sentences($lang, $wordlc, $jsctlname, $mode) {
 	global $tbpref;
-	$r = '<p><b>Sentences in active texts with <i>' . tohtml($wordlc) . '</i></b></p><p>(Click on <img src="icn/tick-button.png" title="Choose" alt="Choose" /> to copy sentence into above term)</p>';
+	$r = '<p><b>Sentences in active texts with <i>' . tohtml($wordlc) . '</i></b></p><p>(Click on <img src="'.$_ENV['BASE_URL'].'/icn/tick-button.png" title="Choose" alt="Choose" /> to copy sentence into above term)</p>';
 	$sql = 'SELECT DISTINCT SeID, SeText FROM ' . $tbpref . 'sentences, ' . $tbpref . 'textitems WHERE TiTextLC = ' . convert_string_to_sqlsyntax($wordlc) . ' AND SeID = TiSeID AND SeLgID = ' . $lang . ' order by CHAR_LENGTH(SeText), SeText limit 0,20';
 	$res = do_mysqli_query($sql);
 	$r .= '<p>';
@@ -2278,7 +2283,7 @@ function get20Sentences($lang, $wordlc, $jsctlname, $mode) {
 	while ($record = mysqli_fetch_assoc($res)) {
 		if ($last != $record['SeText']) {
 			$sent = getSentence($record['SeID'], $wordlc,$mode);
-			$r .= '<span class="click" onclick="{' . $jsctlname . '.value=' . prepare_textdata_js($sent[1]) . '; makeDirty();}"><img src="icn/tick-button.png" title="Choose" alt="Choose" /></span> &nbsp;' . $sent[0] . '<br />';
+			$r .= '<span class="click" onclick="{' . $jsctlname . '.value=' . prepare_textdata_js($sent[1]) . '; makeDirty();}"><img src="'.$_ENV['BASE_URL'].'/icn/tick-button.png" title="Choose" alt="Choose" /></span> &nbsp;' . $sent[0] . '<br />';
 		}
 		$last = $record['SeText'];
 	}
@@ -2911,7 +2916,7 @@ function get_first_translation($trans) {
 function get_annotation_link($textid) {
 	global $tbpref;
 	if ( get_first_value('select length(TxAnnotatedText) as value from ' . $tbpref . 'texts where TxID=' . $textid) > 0) 
-	return ' &nbsp;<a href="print_impr_text.php?text=' . $textid . '" target="_top"><img src="icn/tick.png" title="Annotated Text" alt="Annotated Text" /></a>';
+	return ' &nbsp;<a href="'.$_ENV['BASE_URL'].'/print_impr_text.php?text=' . $textid . '" target="_top"><img src="'.$_ENV['BASE_URL'].'/icn/tick.png" title="Annotated Text" alt="Annotated Text" /></a>';
 	else 
 		return '';
 }
@@ -2931,11 +2936,11 @@ function makeAudioPlayer($audio) {
 		$repeatMode = getSettingZeroOrOne('currentplayerrepeatmode',0);
 ?>
 <link type="text/css" href="css/jplayer_skin/<?php echo $playerskin; ?>.css" rel="stylesheet" />
-<script type="text/javascript" src="js/jquery.jplayer.min.js"></script>
+<script type="text/javascript" src="<?php echo $_ENV['BASE_URL']; ?>/js/jquery.jplayer.min.js"></script>
 <table align="center" style="margin-top:5px;" cellspacing="0" cellpadding="0">
 <tr>
 <td class="center borderleft" style="padding-left:10px;">
-<span id="do-single" class="click<?php echo ($repeatMode ? '' : ' hide'); ?>"><img src="icn/arrow-repeat.png" alt="Toggle Repeat (Now ON)" title="Toogle Repeat (Now ON)" style="width:24px;height:24px;" /></span><span id="do-repeat" class="click<?php echo ($repeatMode ? ' hide' : ''); ?>"><img src="icn/arrow-norepeat.png" alt="Toggle Repeat (Now OFF)" title="Toggle Repeat (Now OFF)" style="width:24px;height:24px;" /></span>
+<span id="do-single" class="click<?php echo ($repeatMode ? '' : ' hide'); ?>"><img src="<?php echo $_ENV['BASE_URL']; ?>/icn/arrow-repeat.png" alt="Toggle Repeat (Now ON)" title="Toogle Repeat (Now ON)" style="width:24px;height:24px;" /></span><span id="do-repeat" class="click<?php echo ($repeatMode ? ' hide' : ''); ?>"><img src="<?php echo $_ENV['BASE_URL']; ?>/icn/arrow-norepeat.png" alt="Toggle Repeat (Now OFF)" title="Toggle Repeat (Now OFF)" style="width:24px;height:24px;" /></span>
 </td>
 <td class="center bordermiddle">&nbsp;</td>
 <td class="bordermiddle">
@@ -2974,7 +2979,7 @@ $currentplayerseconds = getSetting('currentplayerseconds');
 if($currentplayerseconds == '') $currentplayerseconds = 5;
 ?>
 <select id="backtime" name="backtime"><?php echo get_seconds_selectoptions($currentplayerseconds); ?></select><br />
-<span id="backbutt" class="click"><img src="icn/arrow-circle-225-left.png" alt="Rewind n seconds" title="Rewind n seconds" /></span>&nbsp;&nbsp;<span id="forwbutt" class="click"><img src="icn/arrow-circle-315.png" alt="Forward n seconds" title="Forward n seconds" /></span>
+<span id="backbutt" class="click"><img src="<?php echo $_ENV['BASE_URL']; ?>/icn/arrow-circle-225-left.png" alt="Rewind n seconds" title="Rewind n seconds" /></span>&nbsp;&nbsp;<span id="forwbutt" class="click"><img src="<?php echo $_ENV['BASE_URL']; ?>/icn/arrow-circle-315.png" alt="Forward n seconds" title="Forward n seconds" /></span>
 <span id="playTime" class="hide"></span>
 </td>
 <td class="center bordermiddle">&nbsp;</td>
@@ -2984,7 +2989,7 @@ $currentplaybackrate = getSetting('currentplaybackrate');
 if($currentplaybackrate == '') $currentplaybackrate = 10;
 ?>
 <select id="playbackrate" name="playbackrate"><?php echo get_playbackrate_selectoptions($currentplaybackrate); ?></select><br />
-<span id="slower" class="click"><img src="icn/minus.png" alt="Slower" title="Slower" style="margin-top:3px" /></span>&nbsp;<span id="stdspeed" class="click"><img src="icn/status-away.png" alt="Normal" title="Normal" style="margin-top:3px" /></span>&nbsp;<span id="faster" class="click"><img src="icn/plus.png" alt="Faster" title="Faster" style="margin-top:3px" /></span>
+<span id="slower" class="click"><img src="<?php echo $_ENV['BASE_URL']; ?>/icn/minus.png" alt="Slower" title="Slower" style="margin-top:3px" /></span>&nbsp;<span id="stdspeed" class="click"><img src="<?php echo $_ENV['BASE_URL']; ?>/icn/status-away.png" alt="Normal" title="Normal" style="margin-top:3px" /></span>&nbsp;<span id="faster" class="click"><img src="<?php echo $_ENV['BASE_URL']; ?>/icn/plus.png" alt="Faster" title="Faster" style="margin-top:3px" /></span>
 </td>
 </tr>
 <script type="text/javascript">

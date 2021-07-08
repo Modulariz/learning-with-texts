@@ -152,7 +152,7 @@ if (isset($_REQUEST['markaction'])) {
 				
 				elseif ($markaction == 'deltag' ) {
 					$message = removetexttaglist($actiondata,$list);
-					header("Location: edit_texts.php");
+					header("Location: ".$_ENV['BASE_URL']."edit_texts.php");
 					exit();
 				}
 				
@@ -190,7 +190,7 @@ if (isset($_REQUEST['markaction'])) {
 				
 				elseif ($markaction == 'test' ) {
 					$_SESSION['testsql'] = ' ' . $tbpref . 'words, ' . $tbpref . 'textitems where TiLgID = WoLgID and TiTextLC = WoTextLC and TiTxID in ' . $list . ' ';
-					header("Location: do_test.php?selection=1");
+					header("Location: ".$_ENV['BASE_URL']."do_test.php?selection=1");
 					exit();
 				}
 				
@@ -312,9 +312,9 @@ if (isset($_REQUEST['new'])) {
 	
 	?>
 
-	<h4>New Text <a target="_blank" href="info.htm#howtotext"><img src="icn/question-frame.png" title="Help" alt="Help" /></a> </h4>
-	<script type="text/javascript" src="js/unloadformcheck.js" charset="utf-8"></script>	
-	<form class="validate" action="<?php echo $_SERVER['PHP_SELF']; ?>" method="post">
+	<h4>New Text <a target="_blank" href="info.htm#howtotext"><img src="<?php echo $_ENV['BASE_URL'] ?>/icn/question-frame.png" title="Help" alt="Help" /></a> </h4>
+	<script type="text/javascript" src="<?php echo $_ENV['BASE_URL'] ?>/js/unloadformcheck.js" charset="utf-8"></script>	
+	<form class="validate" action="<?php echo $_ENV['BASE_URL'].$_SERVER['PHP_SELF']; ?>" method="post">
 	<table class="tab3" cellspacing="0" cellpadding="5">
 	<tr>
 	<td class="td1 right">Language:</td>
@@ -323,17 +323,17 @@ if (isset($_REQUEST['new'])) {
 	<?php
 	echo get_languages_selectoptions($currentlang,'[Choose...]');
 	?>
-	</select> <img src="icn/status-busy.png" title="Field must not be empty" alt="Field must not be empty" />
+	</select> <img src="<?php echo $_ENV['BASE_URL'] ?>/icn/status-busy.png" title="Field must not be empty" alt="Field must not be empty" />
 	</td>
 	</tr>
 	<tr>
 	<td class="td1 right">Title:</td>
-	<td class="td1"><input type="text" class="notempty checkoutsidebmp" data_info="Title" name="TxTitle" value="" maxlength="200" size="60" /> <img src="icn/status-busy.png" title="Field must not be empty" alt="Field must not be empty" /></td>
+	<td class="td1"><input type="text" class="notempty checkoutsidebmp" data_info="Title" name="TxTitle" value="" maxlength="200" size="60" /> <img src="<?php echo $_ENV['BASE_URL'] ?>/icn/status-busy.png" title="Field must not be empty" alt="Field must not be empty" /></td>
 	</tr>
 	<tr>
 	<td class="td1 right">Text:<br /><br />(max.<br />65,000<br />bytes)</td>
 	<td class="td1">
-	<textarea name="TxText" class="notempty checkbytes checkoutsidebmp" data_maxlength="65000" data_info="Text" cols="60" rows="20"></textarea> <img src="icn/status-busy.png" title="Field must not be empty" alt="Field must not be empty" />
+	<textarea name="TxText" class="notempty checkbytes checkoutsidebmp" data_maxlength="65000" data_info="Text" cols="60" rows="20"></textarea> <img src="<?php echo $_ENV['BASE_URL'] ?>/icn/status-busy.png" title="Field must not be empty" alt="Field must not be empty" />
 	</td>
 	</tr>
 	<tr>
@@ -380,9 +380,9 @@ elseif (isset($_REQUEST['chg'])) {
 
 		?>
 	
-		<h4>Edit Text <a target="_blank" href="info.htm#howtotext"><img src="icn/question-frame.png" title="Help" alt="Help" /></a></h4>
-		<script type="text/javascript" src="js/unloadformcheck.js" charset="utf-8"></script>	
-		<form class="validate" action="<?php echo $_SERVER['PHP_SELF']; ?>#rec<?php echo $_REQUEST['chg']; ?>" method="post">
+		<h4>Edit Text <a target="_blank" href="info.htm#howtotext"><img src="<?php echo $_ENV['BASE_URL'] ?>/icn/question-frame.png" title="Help" alt="Help" /></a></h4>
+		<script type="text/javascript" src="<?php echo $_ENV['BASE_URL'] ?>/js/unloadformcheck.js" charset="utf-8"></script>	
+		<form class="validate" action="<?php echo $_ENV['BASE_URL'].$_SERVER['PHP_SELF']; ?>#rec<?php echo $_REQUEST['chg']; ?>" method="post">
 		<input type="hidden" name="TxID" value="<?php echo $_REQUEST['chg']; ?>" />
 		<table class="tab3" cellspacing="0" cellpadding="5">
 		<tr>
@@ -392,23 +392,23 @@ elseif (isset($_REQUEST['chg'])) {
 		<?php
 		echo get_languages_selectoptions($record['TxLgID'],"[Choose...]");
 		?>
-		</select> <img src="icn/status-busy.png" title="Field must not be empty" alt="Field must not be empty" />
+		</select> <img src="<?php echo $_ENV['BASE_URL'] ?>/icn/status-busy.png" title="Field must not be empty" alt="Field must not be empty" />
 		</td>
 		</tr>
 		<tr>
 		<td class="td1 right">Title:</td>
-		<td class="td1"><input type="text" class="notempty checkoutsidebmp" data_info="Title" name="TxTitle" value="<?php echo tohtml($record['TxTitle']); ?>" maxlength="200" size="60" /> <img src="icn/status-busy.png" title="Field must not be empty" alt="Field must not be empty" /></td>
+		<td class="td1"><input type="text" class="notempty checkoutsidebmp" data_info="Title" name="TxTitle" value="<?php echo tohtml($record['TxTitle']); ?>" maxlength="200" size="60" /> <img src="<?php echo $_ENV['BASE_URL'] ?>/icn/status-busy.png" title="Field must not be empty" alt="Field must not be empty" /></td>
 		</tr>
 		<tr>
 		<td class="td1 right">Text:<br /><br />(max.<br />65,000<br />bytes)</td>
 		<td class="td1">
-		<textarea <?php echo getScriptDirectionTag($record['TxLgID']); ?> name="TxText" class="notempty checkbytes checkoutsidebmp" data_maxlength="65000" data_info="Text" cols="60" rows="20"><?php echo tohtml($record['TxText']); ?></textarea> <img src="icn/status-busy.png" title="Field must not be empty" alt="Field must not be empty" />
+		<textarea <?php echo getScriptDirectionTag($record['TxLgID']); ?> name="TxText" class="notempty checkbytes checkoutsidebmp" data_maxlength="65000" data_info="Text" cols="60" rows="20"><?php echo tohtml($record['TxText']); ?></textarea> <img src="<?php echo $_ENV['BASE_URL'] ?>/icn/status-busy.png" title="Field must not be empty" alt="Field must not be empty" />
 		</td>
 		</tr>
 		<tr>
 		<td class="td1 right">Ann.Text:</td>
 		<td class="td1">
-		<?php echo ($record['annotlen'] ? '<img src="icn/tick.png" title="With Improved Annotation" alt="With Improved Annotation" /> Exists - May be partially or fully lost if you change the text!<br /><input type="button" value="Print/Edit..." onclick="location.href=\'print_impr_text.php?text=' . $_REQUEST['chg'] . '\';" />' : '<img src="icn/cross.png" title="No Improved Annotation" alt="No Improved Annotation" /> - None | <input type="button" value="Create/Print..." onclick="location.href=\'print_impr_text.php?edit=1&amp;text=' . $_REQUEST['chg'] . '\';" />'); ?>
+		<?php echo ($record['annotlen'] ? '<img src="'.$_ENV['BASE_URL'].'/icn/tick.png" title="With Improved Annotation" alt="With Improved Annotation" /> Exists - May be partially or fully lost if you change the text!<br /><input type="button" value="Print/Edit..." onclick="location.href=\'print_impr_text.php?text=' . $_REQUEST['chg'] . '\';" />' : '<img src="'.$_ENV['BASE_URL'].'/icn/cross.png" title="No Improved Annotation" alt="No Improved Annotation" /> - None | <input type="button" value="Create/Print..." onclick="location.href=\'print_impr_text.php?edit=1&amp;text=' . $_REQUEST['chg'] . '\';" />'); ?>
 		</td>
 		</tr>
 		<tr>
@@ -471,14 +471,14 @@ else {
 ?>
 
 <p>
-<a href="<?php echo $_SERVER['PHP_SELF']; ?>?new=1"><img src="icn/plus-button.png" title="New" alt="New" /> New Text ...</a> &nbsp; | &nbsp;
-<a href="long_text_import.php"><img src="icn/plus-button.png" title="Long Text Import" alt="Long Text Import" /> Long Text Import ...</a>
+<a href="<?php echo $_ENV['BASE_URL'].$_SERVER['PHP_SELF']; ?>?new=1"><img src="<?php echo $_ENV['BASE_URL'] ?>/icn/plus-button.png" title="New" alt="New" /> New Text ...</a> &nbsp; | &nbsp;
+<a href="<?php echo $_ENV['BASE_URL'] ?>/long_text_import.php"><img src="<?php echo $_ENV['BASE_URL'] ?>/icn/plus-button.png" title="Long Text Import" alt="Long Text Import" /> Long Text Import ...</a>
 </p>
 
 <form name="form1" action="#" onsubmit="document.form1.querybutton.click(); return false;">
 <table class="tab1" cellspacing="0" cellpadding="5">
 <tr>
-<th class="th1" colspan="4">Filter <img src="icn/funnel.png" title="Filter" alt="Filter" />&nbsp;
+<th class="th1" colspan="4">Filter <img src="<?php echo $_ENV['BASE_URL'] ?>/icn/funnel.png" title="Filter" alt="Filter" />&nbsp;
 <input type="button" value="Reset All" onclick="resetAll('edit_texts.php');" /></th>
 </tr>
 <tr>
@@ -527,10 +527,10 @@ if ($recno==0) {
 <?php
 } else {
 ?>
-<form name="form2" action="<?php echo $_SERVER['PHP_SELF']; ?>" method="post">
+<form name="form2" action="<?php echo $_ENV['BASE_URL'].$_SERVER['PHP_SELF']; ?>" method="post">
 <input type="hidden" name="data" value="" />
 <table class="tab1" cellspacing="0" cellpadding="5">
-<tr><th class="th1" colspan="2">Multi Actions <img src="icn/lightning.png" title="Multi Actions" alt="Multi Actions" /></th></tr>
+<tr><th class="th1" colspan="2">Multi Actions <img src="<?php echo $_ENV['BASE_URL'] ?>/icn/lightning.png" title="Multi Actions" alt="Multi Actions" /></th></tr>
 <tr><td class="td1 center">
 <input type="button" value="Mark All" onclick="selectToggle(true,'form2');" />
 <input type="button" value="Mark None" onclick="selectToggle(false,'form2');" />
@@ -545,7 +545,7 @@ Marked Texts:&nbsp;
 <th class="th1 sorttable_nosort">Read<br />&amp;&nbsp;Test</th>
 <th class="th1 sorttable_nosort">Actions</th>
 <?php if ($currentlang == '') echo '<th class="th1 clickable">Lang.</th>'; ?>
-<th class="th1 clickable">Title [Tags] / Audio:&nbsp;<img src="icn/speaker-volume.png" title="With Audio" alt="With Audio" />, Src.Link:&nbsp;<img src="icn/chain.png" title="Source Link available" alt="Source Link available" />, Ann.Text:&nbsp;<img src="icn/tick.png" title="Annotated Text available" alt="Annotated Text available" /></th>
+<th class="th1 clickable">Title [Tags] / Audio:&nbsp;<img src="<?php echo $_ENV['BASE_URL'] ?>/icn/speaker-volume.png" title="With Audio" alt="With Audio" />, Src.Link:&nbsp;<img src="<?php echo $_ENV['BASE_URL'] ?>/icn/chain.png" title="Source Link available" alt="Source Link available" />, Ann.Text:&nbsp;<img src="<?php echo $_ENV['BASE_URL'] ?>/icn/tick.png" title="Annotated Text available" alt="Annotated Text available" /></th>
 <th class="th1 sorttable_numeric clickable">Total<br />Words</th>
 <th class="th1 sorttable_numeric clickable">Saved<br />Wo+Ex</th>
 <th class="th1 sorttable_numeric clickable">Unkn.<br />Words</th>
@@ -579,17 +579,17 @@ while ($record = mysqli_fetch_assoc($res)) {
 	$audio=trim($audio);
 	echo '<tr>';
 	echo '<td class="td1 center"><a name="rec' . $record['TxID'] . '"><input name="marked[]" class="markcheck" type="checkbox" value="' . $record['TxID'] . '" ' . checkTest($record['TxID'], 'marked') . ' /></a></td>';
-	echo '<td nowrap="nowrap" class="td1 center">&nbsp;<a href="do_text.php?start=' . $record['TxID'] . '"><img src="icn/book-open-bookmark.png" title="Read" alt="Read" /></a>&nbsp; <a href="do_test.php?text=' . $record['TxID'] . '"><img src="icn/question-balloon.png" title="Test" alt="Test" /></a>&nbsp;</td>';
-	echo '<td nowrap="nowrap" class="td1 center">&nbsp;<a href="print_text.php?text=' . $record['TxID'] . '"><img src="icn/printer.png" title="Print" alt="Print" /></a>&nbsp; <a href="' . $_SERVER['PHP_SELF'] . '?arch=' . $record['TxID'] . '"><img src="icn/inbox-download.png" title="Archive" alt="Archive" /></a>&nbsp; <a href="' . $_SERVER['PHP_SELF'] . '?chg=' . $record['TxID'] . '"><img src="icn/document--pencil.png" title="Edit" alt="Edit" /></a>&nbsp; <span class="click" onclick="if (confirmDelete()) location.href=\'' . $_SERVER['PHP_SELF'] . '?del=' . $record['TxID'] . '\';"><img src="icn/minus-button.png" title="Delete" alt="Delete" /></span>&nbsp;</td>';
+	echo '<td nowrap="nowrap" class="td1 center">&nbsp;<a href="'.$_ENV['BASE_URL'].'/do_text.php?start=' . $record['TxID'] . '"><img src="'.$_ENV['BASE_URL'].'/icn/book-open-bookmark.png" title="Read" alt="Read" /></a>&nbsp; <a href="'.$_ENV['BASE_URL'].'/do_test.php?text=' . $record['TxID'] . '"><img src="icn/question-balloon.png" title="Test" alt="Test" /></a>&nbsp;</td>';
+	echo '<td nowrap="nowrap" class="td1 center">&nbsp;<a href="'.$_ENV['BASE_URL'].'/print_text.php?text=' . $record['TxID'] . '"><img src="'.$_ENV['BASE_URL'].'/icn/printer.png" title="Print" alt="Print" /></a>&nbsp; <a href="' . $_ENV['BASE_URL'].$_SERVER['PHP_SELF'] . '?arch=' . $record['TxID'] . '"><img src="icn/inbox-download.png" title="Archive" alt="Archive" /></a>&nbsp; <a href="' . $_ENV['BASE_URL'].$_SERVER['PHP_SELF'] . '?chg=' . $record['TxID'] . '"><img src="icn/document--pencil.png" title="Edit" alt="Edit" /></a>&nbsp; <span class="click" onclick="if (confirmDelete()) location.href=\'' . $_ENV['BASE_URL'].$_SERVER['PHP_SELF'] . '?del=' . $record['TxID'] . '\';"><img src="icn/minus-button.png" title="Delete" alt="Delete" /></span>&nbsp;</td>';
 	if ($currentlang == '') echo '<td class="td1 center">' . tohtml($record['LgName']) . '</td>';
-	echo '<td class="td1 center">' . tohtml($record['TxTitle']) . ' <span class="smallgray2">' . tohtml($record['taglist']) . '</span> &nbsp;' . (($audio != '') ? '<img src="icn/speaker-volume.png" title="With Audio" alt="With Audio" />' : '') . (isset($record['TxSourceURI']) ? ' <a href="' . $record['TxSourceURI'] . '" target="_blank"><img src="icn/chain.png" title="Link to Text Source" alt="Link to Text Source" /></a>' : '') . ($record['annotlen'] ? ' <a href="print_impr_text.php?text=' . $record['TxID'] . '"><img src="icn/tick.png" title="Annotated Text available" alt="Annotated Text available" /></a>' : '') . '</td>';
+	echo '<td class="td1 center">' . tohtml($record['TxTitle']) . ' <span class="smallgray2">' . tohtml($record['taglist']) . '</span> &nbsp;' . (($audio != '') ? '<img src="'.$_ENV['BASE_URL'].'/icn/speaker-volume.png" title="With Audio" alt="With Audio" />' : '') . (isset($record['TxSourceURI']) ? ' <a href="' . $record['TxSourceURI'] . '" target="_blank"><img src="'.$_ENV['BASE_URL'].'/icn/chain.png" title="Link to Text Source" alt="Link to Text Source" /></a>' : '') . ($record['annotlen'] ? ' <a href="'.$_ENV['BASE_URL'].'/print_impr_text.php?text=' . $record['TxID'] . '"><img src="'.$_ENV['BASE_URL'].'/icn/tick.png" title="Annotated Text available" alt="Annotated Text available" /></a>' : '') . '</td>';
 	if ($showCounts) {
 		echo '<td class="td1 center"><span title="Total">&nbsp;' . $txttotalwords . '&nbsp;</span></td>'; 
-		echo '<td class="td1 center"><span title="Saved" class="status4">&nbsp;' . ($txtworkedall > 0 ? '<a href="edit_words.php?page=1&amp;query=&amp;status=&amp;tag12=0&amp;tag2=&amp;tag1=&amp;text=' . $record['TxID'] . '">' . $txtworkedwords . '+' . $txtworkedexpr . '</a>' : '0' ) . '&nbsp;</span></td>';
+		echo '<td class="td1 center"><span title="Saved" class="status4">&nbsp;' . ($txtworkedall > 0 ? '<a href="'.$_ENV['BASE_URL'].'/edit_words.php?page=1&amp;query=&amp;status=&amp;tag12=0&amp;tag2=&amp;tag1=&amp;text=' . $record['TxID'] . '">' . $txtworkedwords . '+' . $txtworkedexpr . '</a>' : '0' ) . '&nbsp;</span></td>';
 		echo '<td class="td1 center"><span title="Unknown" class="status0">&nbsp;' . $txttodowords . '&nbsp;</span></td>';
 		echo '<td class="td1 center"><span title="Unknown (%)">' . $percentunknown . '</span></td>';
 	} else {
-		echo '<td class="td1 center"><span id="total-' . $record['TxID'] . '"></span></td><td class="td1 center"><span data_id="' . $record['TxID'] . '" id="saved-' . $record['TxID'] . '"><span class="click" onclick="do_ajax_word_counts();"><img src="icn/lightning.png" title="View Word Counts" alt="View Word Counts" /></span></span></td><td class="td1 center"><span id="todo-' . $record['TxID'] . '"></span></td><td class="td1 center"><span id="todop-' . $record['TxID'] . '"></span></td>'; 
+		echo '<td class="td1 center"><span id="total-' . $record['TxID'] . '"></span></td><td class="td1 center"><span data_id="' . $record['TxID'] . '" id="saved-' . $record['TxID'] . '"><span class="click" onclick="do_ajax_word_counts();"><img src="'.$_ENV['BASE_URL'].'/icn/lightning.png" title="View Word Counts" alt="View Word Counts" /></span></span></td><td class="td1 center"><span id="todo-' . $record['TxID'] . '"></span></td><td class="td1 center"><span id="todop-' . $record['TxID'] . '"></span></td>'; 
 	}
 	echo '</tr>';
 }
@@ -616,7 +616,7 @@ mysqli_free_result($res);
 
 ?>
 
-<p><input type="button" value="Archived Texts" onclick="location.href='edit_archivedtexts.php?query=&amp;page=1';" /></p>
+<p><input type="button" value="Archived Texts" onclick="location.href='<?php echo $_ENV['BASE_URL'] ?>/edit_archivedtexts.php?query=&amp;page=1';" /></p>
 
 <?php
 

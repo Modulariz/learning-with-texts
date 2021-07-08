@@ -131,7 +131,7 @@ else
 	$prefinfo = "(Table Set: <i>" . tohtml(substr($tbpref,0,-1)) . "</i>)";
 
 ?>
-<form enctype="multipart/form-data" action="<?php echo $_SERVER['PHP_SELF']; ?>" method="post" onsubmit="return confirm('Are you sure?');">
+<form enctype="multipart/form-data" action="<?php echo $_ENV['BASE_URL'].$_SERVER['PHP_SELF']; ?>" method="post" onsubmit="return confirm('Are you sure?');">
 <table class="tab1" cellspacing="0" cellpadding="5">
 <tr>
 <th class="th1 center">Backup</th>

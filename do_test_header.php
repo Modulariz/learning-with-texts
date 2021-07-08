@@ -80,14 +80,14 @@ $totalcount = get_first_value('SELECT count(distinct WoID) as value FROM ' . $te
 
 pagestart_nobody(tohtml($title),$addcss='html, body {margin-bottom:0;}');
 echo '<h4>';
-echo '<a href="edit_texts.php" target="_top">';
+echo '<a href="'.$_ENV['BASE_URL'].'/edit_texts.php" target="_top">';
 echo_lwt_logo();
 echo 'LWT';
 echo '</a>&nbsp; | &nbsp;';
 quickMenu();
 if (substr($p,0,4) == 'text') {
 	echo getPreviousAndNextTextLinks($textid, 'do_test.php?text=', FALSE, '&nbsp; | &nbsp;');
-	echo '&nbsp; | &nbsp;<a href="do_text.php?start=' . $textid . '" target="_top"><img src="icn/book-open-bookmark.png" title="Read" alt="Read" /></a> &nbsp;<a href="print_text.php?text=' . $textid . '" target="_top"><img src="icn/printer.png" title="Print" alt="Print" /></a>' . get_annotation_link($textid);
+	echo '&nbsp; | &nbsp;<a href="'.$_ENV['BASE_URL'].'/do_text.php?start=' . $textid . '" target="_top"><img src="'.$_ENV['BASE_URL'].'/icn/book-open-bookmark.png" title="Read" alt="Read" /></a> &nbsp;<a href="'.$_ENV['BASE_URL'].'/print_text.php?text=' . $textid . '" target="_top"><img src="'.$_ENV['BASE_URL'].'/icn/printer.png" title="Print" alt="Print" /></a>' . get_annotation_link($textid);
 }
 echo '</h4><table><tr><td><h3>TEST&nbsp;▶</h3></td><td class="width99pc"><h3>' . tohtml($title) . ' (Due: ' . $totalcountdue . ' of ' . $totalcount . ')</h3></td></tr><tr><td colspan="2">';
 

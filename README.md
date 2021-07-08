@@ -107,7 +107,7 @@
     *   a [LAMP (Linux-Apache-MySQL-PHP) server](http://en.wikipedia.org/wiki/LAMP_%28software_bundle%29) (Linux).  
     **(3) The LWT Application.**  
     The ZIP Archive _lwt_v_x_y.zip_ can be downloaded [here](http://sourceforge.net/projects/lwt/files/).  
-    The installation is explained [here](#install).  
+    The installation is explained [here](#install).
 
 </dd>
 

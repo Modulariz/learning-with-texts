@@ -117,13 +117,13 @@ if (isset($_REQUEST['op'])) {
 			else {
 
 ?>
-		<script type="text/javascript" src="js/unloadformcheck.js" charset="utf-8"></script>	
+		<script type="text/javascript" src="<?php echo $_ENV['BASE_URL']; ?>/js/unloadformcheck.js" charset="utf-8"></script>	
 		<script type="text/javascript">
 		//<![CDATA[
 		makeDirty();
 		//]]>
 		</script>
-		<form enctype="multipart/form-data"  action="<?php echo $_SERVER['PHP_SELF']; ?>" method="post">
+		<form enctype="multipart/form-data"  action="<?php echo $_ENV['BASE_URL'].$_SERVER['PHP_SELF']; ?>" method="post">
 			<input type="hidden" name="LgID" value="<?php echo $langid; ?>" />
 			<input type="hidden" name="TxTitle" value="<?php echo tohtml($title); ?>" />
 			<input type="hidden" name="TxSourceURI" value="<?php echo tohtml($source_uri); ?>" />
@@ -206,9 +206,9 @@ if (isset($_REQUEST['op'])) {
 
 ?>
 
-	<script type="text/javascript" src="js/unloadformcheck.js" charset="utf-8"></script>			
+	<script type="text/javascript" src="<?php echo $_ENV['BASE_URL']; ?>/js/unloadformcheck.js" charset="utf-8"></script>			
 
-	<form enctype="multipart/form-data" class="validate" action="<?php echo $_SERVER['PHP_SELF']; ?>" method="post">
+	<form enctype="multipart/form-data" class="validate" action="<?php echo $_ENV['BASE_URL'].$_SERVER['PHP_SELF']; ?>" method="post">
 	<table class="tab3" cellspacing="0" cellpadding="5">
 	<tr>
 	<td class="td1 right">Language:</td>
@@ -217,12 +217,12 @@ if (isset($_REQUEST['op'])) {
 	<?php
 	echo get_languages_selectoptions(getSetting('currentlanguage'),'[Choose...]');
 	?>
-	</select> <img src="icn/status-busy.png" title="Field must not be empty" alt="Field must not be empty" /> 
+	</select> <img src="<?php echo $_ENV['BASE_URL']; ?>/icn/status-busy.png" title="Field must not be empty" alt="Field must not be empty" /> 
 	</td>
 	</tr>
 	<tr>
 	<td class="td1 right">Title:</td>
-	<td class="td1"><input type="text" class="notempty checkoutsidebmp" data_info="Title" name="TxTitle" value="" maxlength="200" size="60" /> <img src="icn/status-busy.png" title="Field must not be empty" alt="Field must not be empty" /></td>
+	<td class="td1"><input type="text" class="notempty checkoutsidebmp" data_info="Title" name="TxTitle" value="" maxlength="200" size="60" /> <img src="<?php echo $_ENV['BASE_URL']; ?>/icn/status-busy.png" title="Field must not be empty" alt="Field must not be empty" /></td>
 	</tr>
 	<tr>
 	<td class="td1 right">
@@ -249,12 +249,12 @@ if (isset($_REQUEST['op'])) {
 	<option value="1" selected="selected">ONE NEWLINE: Paragraph ends</option>
 	<option value="2">TWO NEWLINEs: Paragraph ends. Single NEWLINE converted to SPACE</option>
 	</select>
-	<img src="icn/status-busy.png" title="Field must not be empty" alt="Field must not be empty" />
+	<img src="<?php echo $_ENV['BASE_URL']; ?>/icn/status-busy.png" title="Field must not be empty" alt="Field must not be empty" />
 	</td>
 	</tr>
 	<tr>
 	<td class="td1 right">Maximum<br />Sentences<br />per Text:</td>
-	<td class="td1"><input type="text" class="notempty posintnumber"  data_info="Maximum Sentences per Text" name="maxsent" value="50" maxlength="3" size="3" /> <img src="icn/status-busy.png" title="Field must not be empty" alt="Field must not be empty" /><br /><span class="smallgray">Values higher than 100 may slow down text display.<br />Very low values (< 5) may result in too many texts.<br />The maximum number of new texts must not exceed <?php echo ($max_input_vars-20); ?>.<br />A single new text will never exceed the length of 65,000 bytes.</span></td>
+	<td class="td1"><input type="text" class="notempty posintnumber"  data_info="Maximum Sentences per Text" name="maxsent" value="50" maxlength="3" size="3" /> <img src="<?php echo $_ENV['BASE_URL']; ?>/icn/status-busy.png" title="Field must not be empty" alt="Field must not be empty" /><br /><span class="smallgray">Values higher than 100 may slow down text display.<br />Very low values (< 5) may result in too many texts.<br />The maximum number of new texts must not exceed <?php echo ($max_input_vars-20); ?>.<br />A single new text will never exceed the length of 65,000 bytes.</span></td>
 	</tr>
 	<tr>
 	<td class="td1 right">Source URI:</td>

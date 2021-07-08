@@ -70,7 +70,7 @@ elseif (isset($_REQUEST['newpref'])) {
 	} else {
 		$tbpref = $_REQUEST['newpref'];
 		LWTTableSet ("current_table_prefix", $tbpref);
-		header("Location: index.php");
+		header("Location: ".$_ENV['BASE_URL']."index.php");
 		exit(); 
 	}
 }
@@ -79,7 +79,7 @@ elseif (isset($_REQUEST['prefix'])) {
 	if($_REQUEST['prefix'] !== '-') {
 		$tbpref = $_REQUEST['prefix'];
 		LWTTableSet ("current_table_prefix", $tbpref);
-		header("Location: index.php");
+		header("Location: ".$_ENV['BASE_URL']."index.php");
 		exit(); 
 	}
 }
@@ -113,7 +113,7 @@ $prefix = getprefixes();
 <tr>
 <th class="th1 center">Select</th>
 <td class="td1">
-<form name="f1" class="inline" action="<?php echo $_SERVER['PHP_SELF']; ?>" method="post">
+<form name="f1" class="inline" action="<?php echo $_ENV['BASE_URL'].$_SERVER['PHP_SELF']; ?>" method="post">
 <p>Table Set: <select name="prefix">
 <option value="-" selected="selected">[Choose...]</option>
 <option value="">Default Table Set</option>
@@ -135,7 +135,7 @@ foreach ($prefix as $value) {
 <tr>
 <th class="th1 center">Create</th>
 <td class="td1">
-<form name="f2" class="inline" action="<?php echo $_SERVER['PHP_SELF']; ?>" method="post" onsubmit="return check_table_prefix(document.f2.newpref.value);">
+<form name="f2" class="inline" action="<?php echo $_ENV['BASE_URL'].$_SERVER['PHP_SELF']; ?>" method="post" onsubmit="return check_table_prefix(document.f2.newpref.value);">
 <p>New Table Set: <input type="text" name="newpref" value="" maxlength="20" size="20" />
 </p>
 <p class="right">&nbsp;<br /><input type="submit" name="op" value="Create New Table Set &amp; Start LWT" />
@@ -147,7 +147,7 @@ foreach ($prefix as $value) {
 <tr>
 <th class="th1 center">Delete</th>
 <td class="td1">
-<form name="f3" class="inline" action="<?php echo $_SERVER['PHP_SELF']; ?>" method="post" onsubmit="if (document.f3.delpref.selectedIndex > 0) { return confirm('\n*** DELETING TABLE SET: ' + document.f3.delpref.options[document.f3.delpref.selectedIndex].text + ' ***\n\n*** ALL DATA IN THIS TABLE SET WILL BE LOST! ***\n\n*** ARE YOU SURE ?? ***'); } else { return true; }">
+<form name="f3" class="inline" action="<?php echo $_ENV['BASE_URL'].$_SERVER['PHP_SELF']; ?>" method="post" onsubmit="if (document.f3.delpref.selectedIndex > 0) { return confirm('\n*** DELETING TABLE SET: ' + document.f3.delpref.options[document.f3.delpref.selectedIndex].text + ' ***\n\n*** ALL DATA IN THIS TABLE SET WILL BE LOST! ***\n\n*** ARE YOU SURE ?? ***'); } else { return true; }">
 <p>Table Set: <select name="delpref">
 <option value="-" selected="selected">[Choose...]</option>
 <?php

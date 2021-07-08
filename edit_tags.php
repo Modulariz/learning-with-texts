@@ -137,12 +137,12 @@ if (isset($_REQUEST['new'])) {
 	?>
 
 	<h4>New Tag</h4>
-	<script type="text/javascript" src="js/unloadformcheck.js" charset="utf-8"></script>	
-	<form name="newtag" class="validate" action="<?php echo $_SERVER['PHP_SELF']; ?>" method="post">
+	<script type="text/javascript" src="<?php echo $_ENV['BASE_URL']; ?>/js/unloadformcheck.js" charset="utf-8"></script>	
+	<form name="newtag" class="validate" action="<?php echo $_ENV['BASE_URL'].$_SERVER['PHP_SELF']; ?>" method="post">
 	<table class="tab3" cellspacing="0" cellpadding="5">
 	<tr>
 	<td class="td1 right">Tag:</td>
-	<td class="td1"><input class="notempty setfocus noblanksnocomma checkoutsidebmp" type="text" name="TgText" data_info="Tag" value="" maxlength="20" size="20" /> <img src="icn/status-busy.png" title="Field must not be empty" alt="Field must not be empty" /></td>
+	<td class="td1"><input class="notempty setfocus noblanksnocomma checkoutsidebmp" type="text" name="TgText" data_info="Tag" value="" maxlength="20" size="20" /> <img src="<?php echo $_ENV['BASE_URL']; ?>/icn/status-busy.png" title="Field must not be empty" alt="Field must not be empty" /></td>
 	</tr>
 	<tr>
 	<td class="td1 right">Comment:</td>
@@ -169,13 +169,13 @@ elseif (isset($_REQUEST['chg'])) {
 	if ($record = mysqli_fetch_assoc($res)) {
 ?>
 		<h4>Edit Tag</h4>
-		<script type="text/javascript" src="js/unloadformcheck.js" charset="utf-8"></script>	
-		<form name="edittag" class="validate" action="<?php echo $_SERVER['PHP_SELF']; ?>#rec<?php echo $_REQUEST['chg']; ?>" method="post">
+		<script type="text/javascript" src="<?php echo $_ENV['BASE_URL']; ?>/js/unloadformcheck.js" charset="utf-8"></script>	
+		<form name="edittag" class="validate" action="<?php echo $_ENV['BASE_URL'].$_SERVER['PHP_SELF']; ?>#rec<?php echo $_REQUEST['chg']; ?>" method="post">
 		<input type="hidden" name="TgID" value="<?php echo $record['TgID']; ?>" />
 		<table class="tab3" cellspacing="0" cellpadding="5">
 		<tr>
 		<td class="td1 right">Tag:</td>
-		<td class="td1"><input data_info="Tag" class="notempty setfocus noblanksnocomma checkoutsidebmp" type="text" name="TgText" value="<?php echo tohtml($record['TgText']); ?>" maxlength="20" size="20" /> <img src="icn/status-busy.png" title="Field must not be empty" alt="Field must not be empty" /></td>
+		<td class="td1"><input data_info="Tag" class="notempty setfocus noblanksnocomma checkoutsidebmp" type="text" name="TgText" value="<?php echo tohtml($record['TgText']); ?>" maxlength="20" size="20" /> <img src="<?php echo $_ENV['BASE_URL']; ?>/icn/status-busy.png" title="Field must not be empty" alt="Field must not be empty" /></td>
 		</tr>
 		<tr>
 		<td class="td1 right">Comment:</td>
@@ -225,12 +225,12 @@ else {
 	if ($currentsort > $lsorts) $currentsort = $lsorts;
 	
 ?>
-<p><a href="<?php echo $_SERVER['PHP_SELF']; ?>?new=1"><img src="icn/plus-button.png" title="New" alt="New" /> New Term Tag ...</a></p>
+<p><a href="<?php echo $_ENV['BASE_URL'].$_SERVER['PHP_SELF']; ?>?new=1"><img src="<?php echo $_ENV['BASE_URL']; ?>/icn/plus-button.png" title="New" alt="New" /> New Term Tag ...</a></p>
 
 <form name="form1" action="#" onsubmit="document.form1.querybutton.click(); return false;">
 <table class="tab1" cellspacing="0" cellpadding="5">
 <tr>
-<th class="th1" colspan="4">Filter <img src="icn/funnel.png" title="Filter" alt="Filter" />&nbsp;
+<th class="th1" colspan="4">Filter <img src="<?php echo $_ENV['BASE_URL']; ?>/icn/funnel.png" title="Filter" alt="Filter" />&nbsp;
 <input type="button" value="Reset All" onclick="{location.href='edit_tags.php?page=1&amp;query=';}" /></th>
 </tr>
 <tr>
@@ -262,11 +262,11 @@ if ($recno==0) {
 <?php
 } else {
 ?>
-<form name="form2" action="<?php echo $_SERVER['PHP_SELF']; ?>" method="post">
+<form name="form2" action="<?php echo $_ENV['BASE_URL'].$_SERVER['PHP_SELF']; ?>" method="post">
 <input type="hidden" name="data" value="" />
 <table class="tab1" cellspacing="0" cellpadding="5">
 <tr><th class="th1 center" colspan="2">
-Multi Actions <img src="icn/lightning.png" title="Multi Actions" alt="Multi Actions" />
+Multi Actions <img src="<?php echo $_ENV['BASE_URL']; ?>/icn/lightning.png" title="Multi Actions" alt="Multi Actions" />
 </th></tr>
 <tr><td class="td1 center" colspan="2">
 <b>ALL</b> <?php echo ($recno == 1 ? '1 Tag' : $recno . ' Tags'); ?>:&nbsp; 
@@ -298,10 +298,10 @@ while ($record = mysqli_fetch_assoc($res)) {
 	$c = get_first_value('select count(*) as value from ' . $tbpref . 'wordtags where WtTgID=' . $record['TgID']);
 	echo '<tr>';
 	echo '<td class="td1 center"><a name="rec' . $record['TgID'] . '"><input name="marked[]" type="checkbox" class="markcheck" value="' . $record['TgID'] . '" ' . checkTest($record['TgID'], 'marked') . ' /></a></td>';
-	echo '<td class="td1 center" nowrap="nowrap">&nbsp;<a href="' . $_SERVER['PHP_SELF'] . '?chg=' . $record['TgID'] . '"><img src="icn/document--pencil.png" title="Edit" alt="Edit" /></a>&nbsp; <a class="confirmdelete" href="' . $_SERVER['PHP_SELF'] . '?del=' . $record['TgID'] . '"><img src="icn/minus-button.png" title="Delete" alt="Delete" /></a>&nbsp;</td>';
+	echo '<td class="td1 center" nowrap="nowrap">&nbsp;<a href="' . $_ENV['BASE_URL'].$_SERVER['PHP_SELF'] . '?chg=' . $record['TgID'] . '"><img src="<?php echo $_ENV['BASE_URL']; ?>/icn/document--pencil.png" title="Edit" alt="Edit" /></a>&nbsp; <a class="confirmdelete" href="' . $_ENV['BASE_URL'].$_SERVER['PHP_SELF'] . '?del=' . $record['TgID'] . '"><img src="<?php echo $_ENV['BASE_URL']; ?>/icn/minus-button.png" title="Delete" alt="Delete" /></a>&nbsp;</td>';
 	echo '<td class="td1 center">' . tohtml($record['TgText']) . '</td>';
 	echo '<td class="td1 center">' . tohtml($record['TgComment']) . '</td>';
-	echo '<td class="td1 center">' . ($c > 0 ? '<a href="edit_words.php?page=1&amp;query=&amp;text=&amp;status=&amp;filterlang=&amp;status=&amp;tag12=0&amp;tag2=&amp;tag1=' . $record['TgID'] . '">' . $c . '</a>' : '0' ) . '</td>';
+	echo '<td class="td1 center">' . ($c > 0 ? '<a href="'.$_ENV['BASE_URL'].'/edit_words.php?page=1&amp;query=&amp;text=&amp;status=&amp;filterlang=&amp;status=&amp;tag12=0&amp;tag2=&amp;tag1=' . $record['TgID'] . '">' . $c . '</a>' : '0' ) . '</td>';
 	echo '</tr>';
 }
 mysqli_free_result($res);

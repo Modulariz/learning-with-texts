@@ -36,9 +36,13 @@ Set script time limit
 Start a PHP session if not one already exists
 ***************************************************************/
 
-$debug = 1;        // 1 = debugging on, 0 = .. off
+$debug = 0;        // 1 = debugging on, 0 = .. off
 $dsplerrors = 1;   // 1 = display all errors on, 0 = .. off
 $dspltime = 0;     // 1 = display time on, 0 = .. off
+
+if (!isset($_ENV['BASE_URL'])) {
+	$_ENV['BASE_URL'] = "";
+}
 
 if ($dsplerrors) {
 	@error_reporting(E_ALL);
@@ -64,6 +68,10 @@ if(session_id() == '') {
 		my_die('SESSION ID empty (Impossible to start a PHP session)');
 	if (! isset($_SESSION))
 		my_die('SESSION array not set (Impossible to start a PHP session)');
+}
+
+if (!isset($_SESSION['username'])) {
+	header("Location: ".$_ENV['BASE_URL']."/login.php");
 }
 
 ?>

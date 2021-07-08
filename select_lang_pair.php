@@ -111,7 +111,7 @@ function wizard_exit() {
 <div class="center">
 
 <p class="wizard">
-<img src="icn/wizard.png" title="Language Settings Wizard" alt="Language Settings Wizard" />
+<img src="<?php echo $_ENV['BASE_URL']; ?>/icn/wizard.png" title="Language Settings Wizard" alt="Language Settings Wizard" />
 </p>
 
 <h3 class="wizard">
