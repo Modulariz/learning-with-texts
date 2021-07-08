@@ -97,7 +97,7 @@ if ($record = mysqli_fetch_assoc($res)) {
 
 <script type="text/javascript">
 //<![CDATA[
-window.parent.frames['l'].focus();
+//window.parent.frames['l'].focus();
 window.parent.frames['l'].setTimeout('cClick()', 100);
 //]]>
 </script>
