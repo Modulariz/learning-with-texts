@@ -423,7 +423,7 @@ function oewin(url) {
 function createTheDictUrl(u,w) {
 	var url = u.trim();
 	var trm = w.trim();
-	var r = $_ENV['BASE_URL']+'/trans.php?x=2&i=' + escape(u) + '&t=' + w;
+	var r = $_ENV['BASE_URL']+'/trans.php?x=2&i=' + escape(u) + w;
 	return r;
 }
 
