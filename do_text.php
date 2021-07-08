@@ -104,8 +104,52 @@ function rsizeIframes() {
 		css('top',0).css('left',0);
 }
 
+function blurInputs() {
+	$('#frame-h').on("load", function() {
+    $(function () {
+    $('input').blur();
+});
+});
+	$('#frame-h-2').on("load", function() {
+    $(function () {
+    $('input').blur();
+});
+});
+	$('#frame-l').on("load", function() {
+    $(function () {
+    $('input').blur();
+});
+});
+	$('#frame-l-2').on("load", function() {
+    $(function () {
+    $('input').blur();
+});
+});
+	$('#frame-ro').on("load", function() {
+    $(function () {
+    $('input').blur();
+});
+});
+	$('#frame-ro-2').on("load", function() {
+    $(function () {
+    $('input').blur();
+});
+});
+	$('#frame-ru').on("load", function() {
+    $(function () {
+    $('input').blur();
+});
+});
+	$('#frame-ru-2').on("load", function() {
+    $(function () {
+    $('input').blur();
+});
+});
+}
+
 function init() {
 	rsizeIframes();
+	blurInputs();
 	$(window).resize(rsizeIframes);
 }
 
