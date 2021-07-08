@@ -154,6 +154,9 @@ $('#learnstatus', contexth).html('<?php echo texttodocount2($_REQUEST['tid']); ?
 	}
 ?>
 //window.parent.frames['l'].focus();
+$(function () {
+    $('input').blur();
+});
 window.parent.frames['l'].setTimeout('cClick()', 100);
 //]]>
 </script>

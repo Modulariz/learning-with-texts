@@ -68,6 +68,9 @@ var title = make_tooltip(<?php echo prepare_textdata_js($word); ?>,'*','','98');
 $('.TERM<?php echo $hex; ?>', context).removeClass('status0').addClass('status98 word<?php echo $wid; ?>').attr('data_status','98').attr('data_wid','<?php echo $wid; ?>').attr('title',title);
 $('#learnstatus', contexth).html('<?php echo texttodocount2($_REQUEST['tid']); ?>');
 //window.parent.frames['l'].focus();
+$(function () {
+    $('input').blur();
+});
 window.parent.frames['l'].setTimeout('cClick()', 100);
 //]]>
 </script>

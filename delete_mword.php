@@ -62,6 +62,9 @@ $('#learnstatus', contexth).html('<?php echo texttodocount2($tid); ?>');
 if (! $showAll) echo refreshText($word,$tid);
 ?>
 //window.parent.frames['l'].focus();
+$(function () {
+    $('input').blur();
+});
 window.parent.frames['l'].setTimeout('cClick()', 100);
 //]]>
 </script>

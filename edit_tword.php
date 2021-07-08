@@ -129,6 +129,10 @@ if(window.parent.frames['l'].location.href.indexOf('do_test_table') !== -1) {
 	$('.word' + woid, context).attr('data_text',wotext).attr('data_trans',trans).attr('data_rom',roman).attr('data_status',status);
 }
 //window.parent.frames['l'].focus();
+$(function () {
+    $('input').blur();
+});
+
 window.parent.frames['l'].setTimeout('cClick()', 100);
 //]]>
 </script>

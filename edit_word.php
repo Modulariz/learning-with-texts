@@ -158,6 +158,9 @@ $('.word' + woid, context).removeClass('status<?php echo $_REQUEST['WoOldStatus'
 ?>
 $('#learnstatus', contexth).html('<?php echo texttodocount2($_REQUEST['tid']); ?>');
 //window.parent.frames['l'].focus();
+$(function () {
+    $('input').blur();
+});
 window.parent.frames['l'].setTimeout('cClick()', 100);
 <?php
 }  // $fromAnn !== ''

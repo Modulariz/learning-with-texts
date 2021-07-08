@@ -101,6 +101,9 @@ var title = make_tooltip(<?php echo prepare_textdata_js($text); ?>,trans,roman,s
 $('.TERM<?php echo $hex; ?>', context).removeClass('status0 hide').addClass('word' + woid + ' ' + 'status' + status).attr('data_trans',trans).attr('data_rom',roman).attr('data_status',status).attr('data_wid',woid).attr('title',title);
 $('#learnstatus', contexth).html('<?php echo texttodocount2($_REQUEST['tid']); ?>');
 //window.parent.frames['l'].focus();
+$(function () {
+    $('input').blur();
+});
 window.parent.frames['l'].setTimeout('cClick()', 100);
 <?php 
 		if (! $showAll) echo refreshText($text,$_REQUEST['tid']);

@@ -98,6 +98,9 @@ if ($record = mysqli_fetch_assoc($res)) {
 <script type="text/javascript">
 //<![CDATA[
 //window.parent.frames['l'].focus();
+$(function () {
+    $('input').blur();
+});
 window.parent.frames['l'].setTimeout('cClick()', 100);
 //]]>
 </script>
