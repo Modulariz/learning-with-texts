@@ -255,7 +255,7 @@ function noShowAfter3Secs() {
 }
 
 function setTheFocus() {
-	$('.setfocus').focus().select();
+	//$('.setfocus').focus().select();
 }
 
 function word_click_event_do_test_test() {
